@@ -112,9 +112,9 @@
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
 			this.label7.Location = new System.Drawing.Point(613, 181);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(101, 25);
+			this.label7.Size = new System.Drawing.Size(111, 25);
 			this.label7.TabIndex = 10;
-			this.label7.Text = "Group List";
+			this.label7.Text = "Groups List";
 			// 
 			// label6
 			// 
@@ -144,9 +144,9 @@
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
 			this.label1.Location = new System.Drawing.Point(325, 16);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(152, 25);
+			this.label1.Size = new System.Drawing.Size(100, 25);
 			this.label1.TabIndex = 6;
-			this.label1.Text = "Your own Post\'s";
+			this.label1.Text = "Post\'s List";
 			// 
 			// m_PostListBox
 			// 

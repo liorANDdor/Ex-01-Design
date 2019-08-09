@@ -176,8 +176,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					m_ExplainOfMatchLabel.Text = "This is your friend who gave you the most likes! ";
 				}
 				m_PictureProfileFeature.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL);
-				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Do you want to send your friend"+
-																			"\n match a message? "));
+				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match"+
+																			"\n friend a message? "));
 				sendEmailChoice.ShowDialog();
 				if(sendEmailChoice.Choice)
 				{
