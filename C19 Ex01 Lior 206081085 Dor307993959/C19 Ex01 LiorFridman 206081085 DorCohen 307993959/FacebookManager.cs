@@ -3,6 +3,8 @@ using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -221,7 +223,16 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public void SendMail(string i_EmailAddress)
 		{
-			throw new NotImplementedException();
+			MailMessage mail = new MailMessage();
+			SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+			mail.From = new MailAddress(@"facebookuserdorlior@gmail.com");
+			mail.Subject = "Hey! Facebook sending mail feature";
+			mail.To.Add(i_EmailAddress);
+			mail.Body = string.Format(@"Hey, {0} has found that you are his match!! ", LoggedInUser.Name);
+			smtpServer.Port = 587;
+			smtpServer.Credentials = new NetworkCredential(@"facebookuserdorlior@gmail.com", "Fb123456");
+			smtpServer.EnableSsl = true;
+			smtpServer.Send(mail);
 		}
 
 		public string FindYourMatchGroups(string io_FriendMail)
