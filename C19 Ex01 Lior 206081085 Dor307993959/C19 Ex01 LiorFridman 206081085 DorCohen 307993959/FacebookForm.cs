@@ -71,6 +71,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		private void cleanUI()
 		{
 			m_PostListBox.Items.Clear();
+			m_FriendListBox.Items.Clear();
+			m_GroupListBox.Items.Clear();
 			m_PictureProfileFeature.Image = null;
 			m_ProfilePicMain.Image = null;
 
