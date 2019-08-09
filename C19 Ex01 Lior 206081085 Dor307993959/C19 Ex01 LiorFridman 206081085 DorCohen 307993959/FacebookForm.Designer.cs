@@ -30,6 +30,10 @@
 		{
 			System.Windows.Forms.TabPage m_MainTab;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacebookForm));
+			this.m_FriendListBox = new System.Windows.Forms.ListBox();
+			this.m_GroupListBox = new System.Windows.Forms.ListBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
 			this.m_RemberMeCheckbox = new System.Windows.Forms.CheckBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.m_PostListBox = new System.Windows.Forms.ListBox();
@@ -54,10 +58,6 @@
 			this.m_BestTImePic = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.m_BestPhotoBtn = new System.Windows.Forms.Button();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.m_GroupListBox = new System.Windows.Forms.ListBox();
-			this.m_FriendListBox = new System.Windows.Forms.ListBox();
 			m_MainTab = new System.Windows.Forms.TabPage();
 			m_MainTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).BeginInit();
@@ -89,6 +89,42 @@
 			m_MainTab.Size = new System.Drawing.Size(819, 340);
 			m_MainTab.TabIndex = 0;
 			m_MainTab.Text = "Main";
+			// 
+			// m_FriendListBox
+			// 
+			this.m_FriendListBox.FormattingEnabled = true;
+			this.m_FriendListBox.Location = new System.Drawing.Point(330, 209);
+			this.m_FriendListBox.Name = "m_FriendListBox";
+			this.m_FriendListBox.Size = new System.Drawing.Size(216, 121);
+			this.m_FriendListBox.TabIndex = 12;
+			// 
+			// m_GroupListBox
+			// 
+			this.m_GroupListBox.FormattingEnabled = true;
+			this.m_GroupListBox.Location = new System.Drawing.Point(577, 209);
+			this.m_GroupListBox.Name = "m_GroupListBox";
+			this.m_GroupListBox.Size = new System.Drawing.Size(216, 121);
+			this.m_GroupListBox.TabIndex = 11;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.label7.Location = new System.Drawing.Point(613, 181);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(101, 25);
+			this.label7.TabIndex = 10;
+			this.label7.Text = "Group List";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.label6.Location = new System.Drawing.Point(355, 181);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(112, 25);
+			this.label6.TabIndex = 9;
+			this.label6.Text = "Friends List";
 			// 
 			// m_RemberMeCheckbox
 			// 
@@ -146,6 +182,7 @@
 			// 
 			// m_ProfilePicMain
 			// 
+			this.m_ProfilePicMain.Image = ((System.Drawing.Image)(resources.GetObject("m_ProfilePicMain.Image")));
 			this.m_ProfilePicMain.Location = new System.Drawing.Point(9, 57);
 			this.m_ProfilePicMain.Name = "m_ProfilePicMain";
 			this.m_ProfilePicMain.Size = new System.Drawing.Size(200, 167);
@@ -272,6 +309,7 @@
 			// 
 			// m_PictureProfileMatch
 			// 
+			this.m_PictureProfileMatch.Image = ((System.Drawing.Image)(resources.GetObject("m_PictureProfileMatch.Image")));
 			this.m_PictureProfileMatch.Location = new System.Drawing.Point(490, 66);
 			this.m_PictureProfileMatch.Name = "m_PictureProfileMatch";
 			this.m_PictureProfileMatch.Size = new System.Drawing.Size(161, 146);
@@ -281,6 +319,7 @@
 			// 
 			// m_PictureProfileFeature
 			// 
+			this.m_PictureProfileFeature.Image = ((System.Drawing.Image)(resources.GetObject("m_PictureProfileFeature.Image")));
 			this.m_PictureProfileFeature.Location = new System.Drawing.Point(285, 66);
 			this.m_PictureProfileFeature.Name = "m_PictureProfileFeature";
 			this.m_PictureProfileFeature.Size = new System.Drawing.Size(160, 146);
@@ -326,6 +365,7 @@
 			// 
 			// m_BestTImePic
 			// 
+			this.m_BestTImePic.Image = ((System.Drawing.Image)(resources.GetObject("m_BestTImePic.Image")));
 			this.m_BestTImePic.Location = new System.Drawing.Point(376, 80);
 			this.m_BestTImePic.Name = "m_BestTImePic";
 			this.m_BestTImePic.Size = new System.Drawing.Size(398, 226);
@@ -354,42 +394,6 @@
 			this.m_BestPhotoBtn.Text = "run!";
 			this.m_BestPhotoBtn.UseVisualStyleBackColor = false;
 			this.m_BestPhotoBtn.Click += new System.EventHandler(this.bestPhotoBtn_Click);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.label6.Location = new System.Drawing.Point(355, 181);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(112, 25);
-			this.label6.TabIndex = 9;
-			this.label6.Text = "Friends List";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.label7.Location = new System.Drawing.Point(613, 181);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(101, 25);
-			this.label7.TabIndex = 10;
-			this.label7.Text = "Group List";
-			// 
-			// m_GroupListBox
-			// 
-			this.m_GroupListBox.FormattingEnabled = true;
-			this.m_GroupListBox.Location = new System.Drawing.Point(577, 209);
-			this.m_GroupListBox.Name = "m_GroupListBox";
-			this.m_GroupListBox.Size = new System.Drawing.Size(216, 121);
-			this.m_GroupListBox.TabIndex = 11;
-			// 
-			// m_FriendListBox
-			// 
-			this.m_FriendListBox.FormattingEnabled = true;
-			this.m_FriendListBox.Location = new System.Drawing.Point(330, 209);
-			this.m_FriendListBox.Name = "m_FriendListBox";
-			this.m_FriendListBox.Size = new System.Drawing.Size(216, 121);
-			this.m_FriendListBox.TabIndex = 12;
 			// 
 			// FacebookForm
 			// 
