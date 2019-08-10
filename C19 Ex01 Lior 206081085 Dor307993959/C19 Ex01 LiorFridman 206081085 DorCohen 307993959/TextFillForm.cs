@@ -14,22 +14,24 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 	{
 		public string UserInput { get; set; }
 
-		public bool V_isCanceled = false;
+		public bool IsCanceled { get; set; }
 
 		public TextFillForm()
 		{
+			IsCanceled = true;
 			this.InitializeComponent();
 		}
 
 		private void m_SubmitBtn_Click(object sender, EventArgs e)
 		{
 			UserInput = m_TextField.Text;
+			IsCanceled = false;
 			this.Dispose();
 		}
 
 		private void m_CancelBtn_Click(object sender, EventArgs e)
 		{
-			V_isCanceled = true;
+			IsCanceled = true;
 			this.Dispose();
 		}
 	}

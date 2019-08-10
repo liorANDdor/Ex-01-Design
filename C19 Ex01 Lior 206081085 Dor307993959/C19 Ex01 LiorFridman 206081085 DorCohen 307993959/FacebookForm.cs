@@ -138,7 +138,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
             TextFillForm newPost = new TextFillForm();
             newPost.ShowDialog();
             if (!string.IsNullOrEmpty(newPost.UserInput)
-                && !newPost.V_isCanceled)
+                && !newPost.IsCanceled)
             {
                 try
                 {
