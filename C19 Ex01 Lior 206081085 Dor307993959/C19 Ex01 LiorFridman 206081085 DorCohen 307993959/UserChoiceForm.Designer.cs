@@ -1,6 +1,6 @@
 ﻿namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	partial class UserChoiceForm
+	public partial class UserChoiceForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -17,6 +17,7 @@
 			{
 				components.Dispose();
 			}
+
 			base.Dispose(disposing);
 		}
 

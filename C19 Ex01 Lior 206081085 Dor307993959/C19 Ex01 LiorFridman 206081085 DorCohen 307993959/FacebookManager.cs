@@ -1,6 +1,4 @@
-﻿using FacebookWrapper;
-using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,23 +6,28 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	class FacebookManager
+	public class FacebookManager
 	{
-		public User LoggedInUser { set; get; }
-		public LoginResult LoginResult { set; get; }
-		public AppSettings AppSettingsInstance { set; get; }
+		public User LoggedInUser { get; set;  }
+
+		public LoginResult LoginResult { get; set;  }
+
+		public AppSettings AppSettingsInstance { get; set;  }
 
 		public FacebookManager()
 		{
 			AppSettingsInstance = AppSettings.LoadFromFile();
 		}
+
 		public void Login()
 		{
-			LoginResult = FacebookService.Login("1450160541956417", /// (desig patter's "Design Patterns Course App 2.4" app)
-
+			LoginResult = FacebookService.Login(
+                "1450160541956417",
 			   "public_profile",
 			   "email",
 			   "publish_to_groups",
@@ -42,8 +45,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			   "user_location",
 			   "user_photos",
 			   "user_posts",
-			   "user_hometown"
-			   );
+			   "user_hometown");
 				LoggedInUser = LoginResult.LoggedInUser;
 		}
 
@@ -72,7 +74,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					{
 						listPosts.Add(string.Format("[{0}]", post.Type));
 					}
-
 				}
 			}
 			catch (Exception ex)
@@ -112,12 +113,16 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					}
 				}
 			}
+
 			KeyValuePair<User, int> theMostLikerFriend = new KeyValuePair<User, int>(null, 0);
 			foreach (KeyValuePair<User, int> likesOfFriend in likesOfFriendsList)
 			{
-				if (likesOfFriend.Value > theMostLikerFriend.Value)
-					theMostLikerFriend = likesOfFriend;
+                if (likesOfFriend.Value > theMostLikerFriend.Value)
+                {
+                    theMostLikerFriend = likesOfFriend;
+                }
 			}
+
 			io_FriendMail = theMostLikerFriend.Key.Email;
 			return theMostLikerFriend.Key.PictureNormalURL;
 		}
@@ -129,17 +134,18 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			{
 				friendsList.Add(friend.Name);
 			}
+
 			return friendsList;
 		}
 
 		internal List<string> FetchUserGroups()
 		{
-
 			List<string> groupList = new List<string>();
 			foreach (Group group in LoggedInUser.Groups)
 			{
 				groupList.Add(group.Name);
 			}
+
 			return groupList;
 		}
 
@@ -149,7 +155,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			int maxMutualFriends = 0;
 			Random rnd = new Random();
 			int num = rnd.Next(1, 20);
-			User myMatchFriend = LoggedInUser.Friends[num];// in case that Api doesnt work
+			User myMatchFriend = LoggedInUser.Friends[num];
 			foreach (User friend in LoggedInUser.Friends)
 			{
 				mutualFriends = 0;
@@ -157,21 +163,24 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				{
 					foreach (User myFriend in LoggedInUser.Friends)
 					{
-						if (hisfriend == myFriend)
-							mutualFriends++;
+                        if (hisfriend == myFriend)
+                        {
+                            mutualFriends++;
+                        }
 					}
 				}
+
 				if (mutualFriends > maxMutualFriends)
 				{
 					maxMutualFriends = mutualFriends;
 					myMatchFriend = friend;
 				}
 			}
+
 			io_FriendMail = myMatchFriend.Email;
 			return myMatchFriend.PictureLargeURL;
 		}
 		
-
 		public int FindBestTimeToUploadAPicture(List<string> io_Pictures)
 		{
 			FacebookObjectCollection<Album> albums;
@@ -180,20 +189,18 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			for (int i = 0; i < 24; i++)
 			{
 				listOfPhotosLikeByTime.Add(new PhotosAndLikes(0, 0));
-
 			}
 
 			foreach (Album album in albums)
 			{
 				foreach (Photo photo in album.Photos)
-				{
-
+                { 
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].NumOfPhotos += 1;
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].TotalLikes += photo.LikedBy.Count;
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].Pictures.Add(photo.PictureNormalURL);
-
 				}
 			}
+
 			float maxLikePerPhoto = 0;
 			float likesPerPhoto;
 			int bestHourToPhoto = 0;
@@ -208,18 +215,18 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				{
 					likesPerPhoto = 0;
 				}
+
 				if (maxLikePerPhoto < likesPerPhoto)
 				{
 					io_Pictures = photosAndLikes.Pictures;
 					maxLikePerPhoto = likesPerPhoto;
 					bestHourToPhoto = hour;
-
 				}
+
 				hour += 1;
 			}
 
 			return bestHourToPhoto;
-
 		}
 
 		public void SendMail(string i_EmailAddress)
@@ -242,7 +249,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			int maxMutualGroups = 0;
 			Random rnd = new Random();
 			int num = rnd.Next(1, 20);
-			User myMatch = LoggedInUser.Friends[num];//in case that Facebook Api does'nt work
+			User myMatch = LoggedInUser.Friends[num];
 			foreach (User friend in LoggedInUser.Friends)
 			{
 				MutualGroups = 0;
@@ -250,16 +257,20 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				{
 					foreach (Group friendgroup in friend.Groups)
 					{
-						if (friendgroup.Id == group.Id)
-							MutualGroups++;
+                        if (friendgroup.Id == group.Id)
+                        {
+                            MutualGroups++;
+                        }
 					}
 				}
+
 				if (MutualGroups > maxMutualGroups)
 				{
 					maxMutualGroups = MutualGroups;
 					myMatch = friend;
 				}
 			}
+
 			io_FriendMail = myMatch.Email;
 			return myMatch.PictureLargeURL;
 		}

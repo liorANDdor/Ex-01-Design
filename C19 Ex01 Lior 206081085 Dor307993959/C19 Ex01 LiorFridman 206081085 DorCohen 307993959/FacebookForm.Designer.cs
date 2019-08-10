@@ -1,6 +1,6 @@
 ﻿namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	partial class FacebookForm
+	public partial class FacebookForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -17,6 +17,7 @@
 			{
 				components.Dispose();
 			}
+
 			base.Dispose(disposing);
 		}
 
@@ -455,4 +456,3 @@
 		private System.Windows.Forms.Label label6;
 	}
 }
-

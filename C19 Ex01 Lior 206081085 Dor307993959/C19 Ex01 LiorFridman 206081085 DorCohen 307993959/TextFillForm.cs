@@ -13,7 +13,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 	public partial class TextFillForm : Form
 	{
 		public string UserInput { get; set; }
-		public bool isCanceled = false;
+
+		public bool V_isCanceled = false;
+
 		public TextFillForm()
 		{
 			this.InitializeComponent();
@@ -27,9 +29,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		private void m_CancelBtn_Click(object sender, EventArgs e)
 		{
-			isCanceled = true;
+			V_isCanceled = true;
 			this.Dispose();
-
 		}
 	}
 }

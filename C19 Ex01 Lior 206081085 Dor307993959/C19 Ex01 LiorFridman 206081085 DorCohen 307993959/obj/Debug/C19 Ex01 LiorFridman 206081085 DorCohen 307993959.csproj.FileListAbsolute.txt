@@ -1,0 +1,15 @@
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\bin\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.exe.config
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\bin\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.exe
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\bin\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.pdb
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\bin\Debug\Facebook.dll
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\bin\Debug\FbGraphApiWrapper.dll
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.csprojAssemblyReference.cache
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19_Ex01_LiorFridman_206081085_DorCohen_307993959.FacebookForm.resources
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19_Ex01_LiorFridman_206081085_DorCohen_307993959.TextFillForm.resources
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19_Ex01_LiorFridman_206081085_DorCohen_307993959.Properties.Resources.resources
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19_Ex01_LiorFridman_206081085_DorCohen_307993959.UserChoiceForm.resources
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.csproj.GenerateResource.cache
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.csproj.CoreCompileInputs.cache
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.csproj.CopyComplete
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.exe
+C:\Users\dor.cohen\Source\Repos\Ex-01-Design\C19 Ex01 Lior 206081085 Dor307993959\C19 Ex01 LiorFridman 206081085 DorCohen 307993959\obj\Debug\C19 Ex01 LiorFridman 206081085 DorCohen 307993959.pdb

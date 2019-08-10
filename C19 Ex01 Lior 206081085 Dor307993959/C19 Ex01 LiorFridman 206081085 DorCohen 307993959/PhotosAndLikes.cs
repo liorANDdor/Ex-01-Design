@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	class PhotosAndLikes
+	public class PhotosAndLikes
 	{
-		public int TotalLikes { set; get; }
-		public int NumOfPhotos { set; get; }
+		public int TotalLikes { get; set; }
+
+		public int NumOfPhotos { get; set; }
+
 		public List<string> Pictures;
+
 		public PhotosAndLikes(int i_NumOfPhotos, int i_TotalLikes)
 		{
 			NumOfPhotos = i_NumOfPhotos;

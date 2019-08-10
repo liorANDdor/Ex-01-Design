@@ -12,8 +12,10 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
 	public partial class UserChoiceForm : Form
 	{
-		public string m_Question { set; get; }
-		public bool Choice { set; get; }
+		public string m_Question { get; set; }
+
+		public bool Choice { get; set; }
+
 		public UserChoiceForm(string i_Question)
 		{
 			InitializeComponent();

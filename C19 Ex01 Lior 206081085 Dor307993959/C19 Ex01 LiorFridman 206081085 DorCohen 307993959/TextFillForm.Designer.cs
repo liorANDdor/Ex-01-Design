@@ -1,6 +1,6 @@
 ﻿namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	partial class TextFillForm
+	public partial class TextFillForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -17,6 +17,7 @@
 			{
 				components.Dispose();
 			}
+
 			base.Dispose(disposing);
 		}
 
@@ -40,7 +41,7 @@
 			this.m_TextField.Name = "m_TextField";
 			this.m_TextField.Size = new System.Drawing.Size(282, 52);
 			this.m_TextField.TabIndex = 0;
-			this.m_TextField.Text = "";
+            this.m_TextField.Text = string.Empty;
 			// 
 			// m_CancelBtn
 			// 

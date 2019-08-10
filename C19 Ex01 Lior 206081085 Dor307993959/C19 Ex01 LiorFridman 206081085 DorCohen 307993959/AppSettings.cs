@@ -9,13 +9,18 @@ using System.Xml.Serialization;
 
 namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	public sealed class AppSettings
+public sealed class AppSettings
 	{
 		private static AppSettings m_AppSettings = null;
+
 		public Point LastWindowLocation { get; set; }
+
 		public Size LastWindowsSize { get; set; }
+
 		public bool RememberUser { get; set; }
+
 		public string AccessToken { get; set; }
+
 		private AppSettings()
 		{
 			LastWindowLocation = new Point(20, 50);
@@ -23,14 +28,17 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			RememberUser = false;
 			AccessToken = null;
 		}
+
 		public static AppSettings GetInstance()
 		{
 			if (m_AppSettings == null)
 			{
 				m_AppSettings = new AppSettings();
 			}
+
 			return m_AppSettings;
 		}
+
 		public static AppSettings LoadFromFile()
 		{
 			try
@@ -45,6 +53,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			{
 				m_AppSettings = new AppSettings();
 			}
+
 			return m_AppSettings;
 		}
 
@@ -52,11 +61,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		{
 			using (Stream stream = new FileStream(@"C:\temp\AppSettings.xml", FileMode.Create))
 			{
-				XmlSerializer serializer = new XmlSerializer(this.GetType());
-				serializer.Serialize(stream, this);
+                XmlSerializer serializer = new XmlSerializer(this.GetType());
+                serializer.Serialize(stream, this);
 			}
-
-
 		}
 	}
 }
