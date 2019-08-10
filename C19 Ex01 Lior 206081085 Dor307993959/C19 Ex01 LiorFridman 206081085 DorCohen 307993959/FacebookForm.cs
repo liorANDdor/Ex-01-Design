@@ -14,7 +14,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 	{
 		public FacebookForm()
 		{
-			InitializeComponent();
+			this.InitializeComponent();
 			m_FacebookManager = new FacebookManager();
 
 
@@ -39,7 +39,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					m_FacebookManager.Connect();
 					m_RemberMeCheckbox.Enabled = true;
 					m_LoginLogoutBtn.Text = "Logout";
-					fetchUserInfo();
+					this.fetchUserInfo();
 
 				}
 			}
@@ -55,7 +55,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				m_FacebookManager.Login();
 				m_LoginLogoutBtn.Text = "Logout";
 				m_RemberMeCheckbox.Enabled = true;
-				fetchUserInfo();
+				this.fetchUserInfo();
 			}
 			else
 			{
@@ -83,9 +83,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			try
 			{
 				m_ProfilePicMain.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL);
-				fetchUserPosts();
-				fetchUserFriends();
-				fetchUserGroups();
+				this.fetchUserPosts();
+				this.fetchUserFriends();
+				this.fetchUserGroups();
 			}
 			catch (Exception ex)
 			{
@@ -146,7 +146,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				{
 					m_FacebookManager.LoggedInUser.PostStatus(newPost.UserInput);
 				}
-				catch(Exception ex)
+				catch (Exception ex)
 				{
 					MessageBox.Show(ex.Message);
 				}
@@ -159,7 +159,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		private void runFindMatchBtn_Click(object sender, EventArgs e)
 		{
-			string userMatchMail= null;
+			string userMatchMail = null;
 			try
 			{
 				if (m_RadioFriends.Checked)
@@ -178,10 +178,10 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					m_ExplainOfMatchLabel.Text = "This is your friend who gave you the most likes! ";
 				}
 				m_PictureProfileFeature.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL);
-				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match"+
+				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
 																			"\n friend a message? "));
 				sendEmailChoice.ShowDialog();
-				if(sendEmailChoice.Choice)
+				if (sendEmailChoice.Choice)
 				{
 					m_FacebookManager.SendMail(userMatchMail);
 				}

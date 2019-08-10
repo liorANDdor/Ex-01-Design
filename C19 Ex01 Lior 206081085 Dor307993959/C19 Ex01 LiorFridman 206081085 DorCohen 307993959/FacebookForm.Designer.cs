@@ -276,7 +276,7 @@
 			// 
 			this.m_RadioFriends.AutoSize = true;
 			this.m_RadioFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_RadioFriends.Location = new System.Drawing.Point(42, 96);
+			this.m_RadioFriends.Location = new System.Drawing.Point(52, 96);
 			this.m_RadioFriends.Name = "m_RadioFriends";
 			this.m_RadioFriends.Size = new System.Drawing.Size(132, 24);
 			this.m_RadioFriends.TabIndex = 7;
@@ -286,24 +286,24 @@
 			// m_RadioGroup
 			// 
 			this.m_RadioGroup.AutoSize = true;
+			this.m_RadioGroup.Checked = true;
 			this.m_RadioGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_RadioGroup.Location = new System.Drawing.Point(42, 126);
+			this.m_RadioGroup.Location = new System.Drawing.Point(52, 66);
 			this.m_RadioGroup.Name = "m_RadioGroup";
 			this.m_RadioGroup.Size = new System.Drawing.Size(132, 24);
 			this.m_RadioGroup.TabIndex = 6;
+			this.m_RadioGroup.TabStop = true;
 			this.m_RadioGroup.Text = "Mutual Groups";
 			this.m_RadioGroup.UseVisualStyleBackColor = true;
 			// 
 			// m_RadioPhoto
 			// 
 			this.m_RadioPhoto.AutoSize = true;
-			this.m_RadioPhoto.Checked = true;
 			this.m_RadioPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_RadioPhoto.Location = new System.Drawing.Point(42, 66);
+			this.m_RadioPhoto.Location = new System.Drawing.Point(52, 126);
 			this.m_RadioPhoto.Name = "m_RadioPhoto";
 			this.m_RadioPhoto.Size = new System.Drawing.Size(129, 24);
 			this.m_RadioPhoto.TabIndex = 5;
-			this.m_RadioPhoto.TabStop = true;
 			this.m_RadioPhoto.Text = "Mutual Photos";
 			this.m_RadioPhoto.UseVisualStyleBackColor = true;
 			// 

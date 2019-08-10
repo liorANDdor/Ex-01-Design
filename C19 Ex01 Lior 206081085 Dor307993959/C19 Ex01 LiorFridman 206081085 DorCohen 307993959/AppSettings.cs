@@ -12,24 +12,20 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 	public sealed class AppSettings
 	{
 		private static AppSettings m_AppSettings = null;
-
 		public Point LastWindowLocation { get; set; }
 		public Size LastWindowsSize { get; set; }
 		public bool RememberUser { get; set; }
-
 		public string AccessToken { get; set; }
-
-
 		private AppSettings()
 		{
 			LastWindowLocation = new Point(20, 50);
 			LastWindowsSize = new Size(800, 500);
 			RememberUser = false;
-			AccessToken = null; ;
+			AccessToken = null;
 		}
 		public static AppSettings GetInstance()
 		{
-			if(m_AppSettings == null)
+			if (m_AppSettings == null)
 			{
 				m_AppSettings = new AppSettings();
 			}

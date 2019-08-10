@@ -23,27 +23,27 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		}
 		public void Login()
 		{
-			 LoginResult = FacebookService.Login("1450160541956417", /// (desig patter's "Design Patterns Course App 2.4" app)
+			LoginResult = FacebookService.Login("1450160541956417", /// (desig patter's "Design Patterns Course App 2.4" app)
 
-				"public_profile",
-				"email",
-				"publish_to_groups",
-				"user_birthday",
-				"user_age_range",
-				"user_gender",
-				"user_link",
-				"user_tagged_places",
-				"user_videos",
-				"publish_to_groups",
-				"groups_access_member_info",
-				"user_friends",
-				"user_events",
-				"user_likes",
-				"user_location",
-				"user_photos",
-				"user_posts",
-				"user_hometown"
-				);
+			   "public_profile",
+			   "email",
+			   "publish_to_groups",
+			   "user_birthday",
+			   "user_age_range",
+			   "user_gender",
+			   "user_link",
+			   "user_tagged_places",
+			   "user_videos",
+			   "publish_to_groups",
+			   "groups_access_member_info",
+			   "user_friends",
+			   "user_events",
+			   "user_likes",
+			   "user_location",
+			   "user_photos",
+			   "user_posts",
+			   "user_hometown"
+			   );
 				LoggedInUser = LoginResult.LoggedInUser;
 		}
 
@@ -75,7 +75,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
@@ -93,27 +93,27 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public string FindYourMatchPhotos(string io_FriendMail)
 		{
-			FacebookObjectCollection<User> friendsOfUser= LoggedInUser.Friends;
+			FacebookObjectCollection<User> friendsOfUser = LoggedInUser.Friends;
 			Dictionary<User, int> likesOfFriendsList = new Dictionary<User, int>();
-			foreach(Album album in LoggedInUser.Albums)
+			foreach (Album album in LoggedInUser.Albums)
 			{
-				foreach(Photo photo in album.Photos)
+				foreach (Photo photo in album.Photos)
 				{
-					foreach(User user in photo.LikedBy)
+					foreach (User user in photo.LikedBy)
 					{
-						if(likesOfFriendsList.ContainsKey(user))
+						if (likesOfFriendsList.ContainsKey(user))
 						{
 							likesOfFriendsList[user]++;
 						}
 						else
 						{
-							likesOfFriendsList.Add(user,1);
+							likesOfFriendsList.Add(user, 1);
 						}
 					}
 				}
 			}
-			KeyValuePair<User, int> theMostLikerFriend = new KeyValuePair<User, int>(null,0);
-			foreach (KeyValuePair<User,int> likesOfFriend in likesOfFriendsList)
+			KeyValuePair<User, int> theMostLikerFriend = new KeyValuePair<User, int>(null, 0);
+			foreach (KeyValuePair<User, int> likesOfFriend in likesOfFriendsList)
 			{
 				if (likesOfFriend.Value > theMostLikerFriend.Value)
 					theMostLikerFriend = likesOfFriend;
@@ -125,7 +125,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		internal List<string> FetchUserFriends()
 		{
 			List<string> friendsList = new List<string>();
-			foreach(User friend in LoggedInUser.Friends)
+			foreach (User friend in LoggedInUser.Friends)
 			{
 				friendsList.Add(friend.Name);
 			}
@@ -149,13 +149,13 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			int maxMutualFriends = 0;
 			Random rnd = new Random();
 			int num = rnd.Next(1, 20);
-			User myMatchFriend = LoggedInUser.Friends[num];//in case that Api doesnt work
-			foreach(User friend in LoggedInUser.Friends)
+			User myMatchFriend = LoggedInUser.Friends[num];// in case that Api doesnt work
+			foreach (User friend in LoggedInUser.Friends)
 			{
 				mutualFriends = 0;
-				foreach(User hisfriend in friend.Friends )
+				foreach (User hisfriend in friend.Friends)
 				{
-					foreach(User myFriend in LoggedInUser.Friends)
+					foreach (User myFriend in LoggedInUser.Friends)
 					{
 						if (hisfriend == myFriend)
 							mutualFriends++;
@@ -179,15 +179,15 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			List<PhotosAndLikes> listOfPhotosLikeByTime = new List<PhotosAndLikes>();
 			for (int i = 0; i < 24; i++)
 			{
-				listOfPhotosLikeByTime.Add(new PhotosAndLikes(0,0));
-				
+				listOfPhotosLikeByTime.Add(new PhotosAndLikes(0, 0));
+
 			}
 
-			foreach(Album album in albums)
+			foreach (Album album in albums)
 			{
-				foreach(Photo photo in album.Photos)
+				foreach (Photo photo in album.Photos)
 				{
-					
+
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].NumOfPhotos += 1;
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].TotalLikes += photo.LikedBy.Count;
 					listOfPhotosLikeByTime[photo.CreatedTime.Value.Hour].Pictures.Add(photo.PictureNormalURL);
@@ -198,7 +198,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			float likesPerPhoto;
 			int bestHourToPhoto = 0;
 			int hour = 0;
-			foreach(PhotosAndLikes photosAndLikes in listOfPhotosLikeByTime)
+			foreach (PhotosAndLikes photosAndLikes in listOfPhotosLikeByTime)
 			{
 				if (photosAndLikes.NumOfPhotos != 0)
 				{
@@ -213,10 +213,11 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					io_Pictures = photosAndLikes.Pictures;
 					maxLikePerPhoto = likesPerPhoto;
 					bestHourToPhoto = hour;
-					
+
 				}
 				hour += 1;
 			}
+
 			return bestHourToPhoto;
 
 		}
@@ -242,19 +243,18 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			Random rnd = new Random();
 			int num = rnd.Next(1, 20);
 			User myMatch = LoggedInUser.Friends[num];//in case that Facebook Api does'nt work
-
-			foreach(User friend in LoggedInUser.Friends)
+			foreach (User friend in LoggedInUser.Friends)
 			{
 				MutualGroups = 0;
-				foreach ( Group group in LoggedInUser.Groups)
+				foreach (Group group in LoggedInUser.Groups)
 				{
-					foreach(Group friendgroup in friend.Groups)
+					foreach (Group friendgroup in friend.Groups)
 					{
 						if (friendgroup.Id == group.Id)
-							MutualGroups ++;
+							MutualGroups++;
 					}
 				}
-				if(MutualGroups>maxMutualGroups)
+				if (MutualGroups > maxMutualGroups)
 				{
 					maxMutualGroups = MutualGroups;
 					myMatch = friend;
