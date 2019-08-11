@@ -205,7 +205,14 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
                 }
             }
 
-            m_FacebookManager.AppSettingsInstance.SaveToFile();
+			try
+			{
+				m_FacebookManager.AppSettingsInstance.SaveToFile();
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
         }
 
         private void bestPhotoBtn_Click(object sender, EventArgs e)

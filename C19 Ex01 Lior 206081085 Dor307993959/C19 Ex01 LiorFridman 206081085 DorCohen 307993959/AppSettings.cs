@@ -43,7 +43,7 @@ public sealed class AppSettings
 		{
 			try
 			{
-				using (Stream stream = new FileStream(@"C:\temp\AppSettings.xml", FileMode.Open))
+				using (Stream stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "AppSettings.xml"), FileMode.Open))
 				{
 					XmlSerializer serializer = new XmlSerializer(typeof(AppSettings));
 					m_AppSettings = serializer.Deserialize(stream) as AppSettings;
@@ -59,7 +59,7 @@ public sealed class AppSettings
 
 		public void SaveToFile()
 		{
-			using (Stream stream = new FileStream(@"C:\temp\AppSettings.xml", FileMode.Create))
+			using (Stream stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "AppSettings.xml"), FileMode.Create))
 			{
                 XmlSerializer serializer = new XmlSerializer(this.GetType());
                 serializer.Serialize(stream, this);
