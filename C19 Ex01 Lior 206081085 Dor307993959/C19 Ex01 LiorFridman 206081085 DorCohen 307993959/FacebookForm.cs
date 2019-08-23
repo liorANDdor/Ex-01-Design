@@ -125,6 +125,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
         private void fetchUserPosts()
         {
+			/*
             List<string> userPosts = m_FacebookManager.FetchUserPosts();
             foreach (string post in userPosts)
             {
@@ -134,7 +135,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
             if (userPosts.Count == 0)
             {
                 m_PostListBox.Items.Add("No Posts to retrieve :(");
-            }
+            }*/
+			postBindingSource.DataSource = m_FacebookManager.LoggedInUser.Posts;
         }
 
         private void postBtn_Click(object sender, EventArgs e)

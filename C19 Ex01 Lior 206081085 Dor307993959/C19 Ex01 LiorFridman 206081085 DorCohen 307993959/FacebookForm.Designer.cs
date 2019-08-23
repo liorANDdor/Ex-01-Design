@@ -29,8 +29,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.TabPage m_MainTab;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacebookForm));
+			System.Windows.Forms.Label createdTimeLabel;
+			System.Windows.Forms.Label descriptionLabel;
+			System.Windows.Forms.Label nameLabel;
+			System.Windows.Forms.Label updateTimeLabel;
 			this.m_FriendListBox = new System.Windows.Forms.ListBox();
 			this.m_GroupListBox = new System.Windows.Forms.ListBox();
 			this.label7 = new System.Windows.Forms.Label();
@@ -59,7 +64,17 @@
 			this.m_BestTImePic = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.m_BestPhotoBtn = new System.Windows.Forms.Button();
+			this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.descriptionTextBox = new System.Windows.Forms.TextBox();
+			this.nameLabel1 = new System.Windows.Forms.Label();
+			this.updateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.commentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			m_MainTab = new System.Windows.Forms.TabPage();
+			createdTimeLabel = new System.Windows.Forms.Label();
+			descriptionLabel = new System.Windows.Forms.Label();
+			nameLabel = new System.Windows.Forms.Label();
+			updateTimeLabel = new System.Windows.Forms.Label();
 			m_MainTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).BeginInit();
@@ -69,11 +84,22 @@
 			this.m_Bar.SuspendLayout();
 			this.secondfeature.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_BestTImePic)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// m_MainTab
 			// 
+			m_MainTab.AutoScroll = true;
 			m_MainTab.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			m_MainTab.Controls.Add(createdTimeLabel);
+			m_MainTab.Controls.Add(this.createdTimeDateTimePicker);
+			m_MainTab.Controls.Add(descriptionLabel);
+			m_MainTab.Controls.Add(this.descriptionTextBox);
+			m_MainTab.Controls.Add(nameLabel);
+			m_MainTab.Controls.Add(this.nameLabel1);
+			m_MainTab.Controls.Add(updateTimeLabel);
+			m_MainTab.Controls.Add(this.updateTimeDateTimePicker);
 			m_MainTab.Controls.Add(this.m_FriendListBox);
 			m_MainTab.Controls.Add(this.m_GroupListBox);
 			m_MainTab.Controls.Add(this.label7);
@@ -87,14 +113,14 @@
 			m_MainTab.Location = new System.Drawing.Point(4, 22);
 			m_MainTab.Name = "m_MainTab";
 			m_MainTab.Padding = new System.Windows.Forms.Padding(3);
-			m_MainTab.Size = new System.Drawing.Size(819, 340);
+			m_MainTab.Size = new System.Drawing.Size(873, 364);
 			m_MainTab.TabIndex = 0;
 			m_MainTab.Text = "Main";
 			// 
 			// m_FriendListBox
 			// 
 			this.m_FriendListBox.FormattingEnabled = true;
-			this.m_FriendListBox.Location = new System.Drawing.Point(330, 209);
+			this.m_FriendListBox.Location = new System.Drawing.Point(232, 57);
 			this.m_FriendListBox.Name = "m_FriendListBox";
 			this.m_FriendListBox.Size = new System.Drawing.Size(216, 121);
 			this.m_FriendListBox.TabIndex = 12;
@@ -102,7 +128,7 @@
 			// m_GroupListBox
 			// 
 			this.m_GroupListBox.FormattingEnabled = true;
-			this.m_GroupListBox.Location = new System.Drawing.Point(577, 209);
+			this.m_GroupListBox.Location = new System.Drawing.Point(232, 235);
 			this.m_GroupListBox.Name = "m_GroupListBox";
 			this.m_GroupListBox.Size = new System.Drawing.Size(216, 121);
 			this.m_GroupListBox.TabIndex = 11;
@@ -111,7 +137,7 @@
 			// 
 			this.label7.AutoSize = true;
 			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.label7.Location = new System.Drawing.Point(613, 181);
+			this.label7.Location = new System.Drawing.Point(227, 199);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(111, 25);
 			this.label7.TabIndex = 10;
@@ -121,7 +147,7 @@
 			// 
 			this.label6.AutoSize = true;
 			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.label6.Location = new System.Drawing.Point(355, 181);
+			this.label6.Location = new System.Drawing.Point(227, 21);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(112, 25);
 			this.label6.TabIndex = 9;
@@ -143,7 +169,7 @@
 			// 
 			this.label1.AutoSize = true;
 			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.label1.Location = new System.Drawing.Point(325, 16);
+			this.label1.Location = new System.Drawing.Point(469, 16);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(100, 25);
 			this.label1.TabIndex = 6;
@@ -151,19 +177,21 @@
 			// 
 			// m_PostListBox
 			// 
+			this.m_PostListBox.DataSource = this.postBindingSource;
+			this.m_PostListBox.DisplayMember = "Message";
 			this.m_PostListBox.FormattingEnabled = true;
-			this.m_PostListBox.Location = new System.Drawing.Point(330, 57);
+			this.m_PostListBox.Location = new System.Drawing.Point(474, 57);
 			this.m_PostListBox.Name = "m_PostListBox";
-			this.m_PostListBox.Size = new System.Drawing.Size(463, 121);
+			this.m_PostListBox.Size = new System.Drawing.Size(357, 121);
 			this.m_PostListBox.TabIndex = 5;
 			// 
 			// m_PostBtn
 			// 
 			this.m_PostBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this.m_PostBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_PostBtn.Location = new System.Drawing.Point(598, 6);
+			this.m_PostBtn.Location = new System.Drawing.Point(703, 11);
 			this.m_PostBtn.Name = "m_PostBtn";
-			this.m_PostBtn.Size = new System.Drawing.Size(185, 45);
+			this.m_PostBtn.Size = new System.Drawing.Size(116, 35);
 			this.m_PostBtn.TabIndex = 3;
 			this.m_PostBtn.Text = "Post something";
 			this.m_PostBtn.UseVisualStyleBackColor = false;
@@ -194,9 +222,9 @@
 			// m_FaceBookBarPic
 			// 
 			this.m_FaceBookBarPic.Image = ((System.Drawing.Image)(resources.GetObject("m_FaceBookBarPic.Image")));
-			this.m_FaceBookBarPic.Location = new System.Drawing.Point(4, 0);
+			this.m_FaceBookBarPic.Location = new System.Drawing.Point(0, 6);
 			this.m_FaceBookBarPic.Name = "m_FaceBookBarPic";
-			this.m_FaceBookBarPic.Size = new System.Drawing.Size(819, 92);
+			this.m_FaceBookBarPic.Size = new System.Drawing.Size(881, 92);
 			this.m_FaceBookBarPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.m_FaceBookBarPic.TabIndex = 0;
 			this.m_FaceBookBarPic.TabStop = false;
@@ -334,10 +362,10 @@
 			this.m_Bar.Controls.Add(this.m_FindMatchTab);
 			this.m_Bar.Controls.Add(this.secondfeature);
 			this.m_Bar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.m_Bar.Location = new System.Drawing.Point(0, 114);
+			this.m_Bar.Location = new System.Drawing.Point(0, 112);
 			this.m_Bar.Name = "m_Bar";
 			this.m_Bar.SelectedIndex = 0;
-			this.m_Bar.Size = new System.Drawing.Size(827, 366);
+			this.m_Bar.Size = new System.Drawing.Size(881, 390);
 			this.m_Bar.TabIndex = 0;
 			// 
 			// secondfeature
@@ -396,12 +424,98 @@
 			this.m_BestPhotoBtn.UseVisualStyleBackColor = false;
 			this.m_BestPhotoBtn.Click += new System.EventHandler(this.bestPhotoBtn_Click);
 			// 
+			// postBindingSource
+			// 
+			this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+			// 
+			// createdTimeLabel
+			// 
+			createdTimeLabel.AutoSize = true;
+			createdTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			createdTimeLabel.Location = new System.Drawing.Point(472, 206);
+			createdTimeLabel.Name = "createdTimeLabel";
+			createdTimeLabel.Size = new System.Drawing.Size(93, 16);
+			createdTimeLabel.TabIndex = 12;
+			createdTimeLabel.Text = "Created Time:";
+			// 
+			// createdTimeDateTimePicker
+			// 
+			this.createdTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "CreatedTime", true));
+			this.createdTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.createdTimeDateTimePicker.Location = new System.Drawing.Point(590, 206);
+			this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
+			this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+			this.createdTimeDateTimePicker.TabIndex = 13;
+			// 
+			// descriptionLabel
+			// 
+			descriptionLabel.AutoSize = true;
+			descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			descriptionLabel.Location = new System.Drawing.Point(472, 231);
+			descriptionLabel.Name = "descriptionLabel";
+			descriptionLabel.Size = new System.Drawing.Size(79, 16);
+			descriptionLabel.TabIndex = 14;
+			descriptionLabel.Text = "Description:";
+			// 
+			// descriptionTextBox
+			// 
+			this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Description", true));
+			this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.descriptionTextBox.Location = new System.Drawing.Point(590, 232);
+			this.descriptionTextBox.Name = "descriptionTextBox";
+			this.descriptionTextBox.Size = new System.Drawing.Size(200, 22);
+			this.descriptionTextBox.TabIndex = 15;
+			// 
+			// nameLabel
+			// 
+			nameLabel.AutoSize = true;
+			nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			nameLabel.Location = new System.Drawing.Point(472, 255);
+			nameLabel.Name = "nameLabel";
+			nameLabel.Size = new System.Drawing.Size(48, 16);
+			nameLabel.TabIndex = 16;
+			nameLabel.Text = "Name:";
+			// 
+			// nameLabel1
+			// 
+			this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Name", true));
+			this.nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.nameLabel1.Location = new System.Drawing.Point(590, 258);
+			this.nameLabel1.Name = "nameLabel1";
+			this.nameLabel1.Size = new System.Drawing.Size(200, 23);
+			this.nameLabel1.TabIndex = 17;
+			this.nameLabel1.Text = "label8";
+			// 
+			// updateTimeLabel
+			// 
+			updateTimeLabel.AutoSize = true;
+			updateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			updateTimeLabel.Location = new System.Drawing.Point(472, 281);
+			updateTimeLabel.Name = "updateTimeLabel";
+			updateTimeLabel.Size = new System.Drawing.Size(90, 16);
+			updateTimeLabel.TabIndex = 18;
+			updateTimeLabel.Text = "Update Time:";
+			// 
+			// updateTimeDateTimePicker
+			// 
+			this.updateTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "UpdateTime", true));
+			this.updateTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.updateTimeDateTimePicker.Location = new System.Drawing.Point(590, 281);
+			this.updateTimeDateTimePicker.Name = "updateTimeDateTimePicker";
+			this.updateTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+			this.updateTimeDateTimePicker.TabIndex = 19;
+			// 
+			// commentsBindingSource
+			// 
+			this.commentsBindingSource.DataMember = "Comments";
+			this.commentsBindingSource.DataSource = this.postBindingSource;
+			// 
 			// FacebookForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			this.ClientSize = new System.Drawing.Size(827, 480);
+			this.ClientSize = new System.Drawing.Size(881, 502);
 			this.Controls.Add(this.m_FaceBookBarPic);
 			this.Controls.Add(this.m_Bar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -420,6 +534,8 @@
 			this.secondfeature.ResumeLayout(false);
 			this.secondfeature.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_BestTImePic)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -454,5 +570,11 @@
 		private System.Windows.Forms.ListBox m_GroupListBox;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.BindingSource postBindingSource;
+		private System.Windows.Forms.DateTimePicker createdTimeDateTimePicker;
+		private System.Windows.Forms.TextBox descriptionTextBox;
+		private System.Windows.Forms.Label nameLabel1;
+		private System.Windows.Forms.DateTimePicker updateTimeDateTimePicker;
+		private System.Windows.Forms.BindingSource commentsBindingSource;
 	}
 }
