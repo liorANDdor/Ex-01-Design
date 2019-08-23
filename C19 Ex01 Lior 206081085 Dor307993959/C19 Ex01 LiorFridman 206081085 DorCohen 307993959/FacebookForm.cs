@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FacebookWrapper.ObjectModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -93,7 +94,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
             }
         }
 
-        private void fetchUserGroups()
+        private void fetchUserFriends()
         {
             List<string> userFriends = m_FacebookManager.FetchUserFriends();
             foreach (string friend in userFriends)
@@ -107,10 +108,11 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
             }
         }
 
-        private void fetchUserFriends()
+        private void fetchUserGroups()
         {
-            List<string> userGroups = m_FacebookManager.FetchUserGroups();
-            foreach (string group in userGroups)
+			m_GroupListBox.DisplayMember = "Name";
+            List<Group> userGroups = m_FacebookManager.FetchUserGroups();
+            foreach (Group group in userGroups)
             {
                 m_GroupListBox.Items.Add(group);
             }

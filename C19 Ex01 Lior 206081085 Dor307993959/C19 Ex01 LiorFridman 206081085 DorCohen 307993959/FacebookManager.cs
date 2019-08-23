@@ -116,12 +116,12 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			return friendsList;
 		}
 
-		internal List<string> FetchUserGroups()
+		internal List<Group> FetchUserGroups()
 		{
-			List<string> groupList = new List<string>();
+			List<Group> groupList = new List<Group>();
 			foreach (Group group in LoggedInUser.Groups)
 			{
-				groupList.Add(group.Name);
+				groupList.Add(group);
 			}
 
 			return groupList;
