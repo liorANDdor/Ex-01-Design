@@ -60,6 +60,7 @@
       <DependentUpon>FacebookForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FacebookManager.cs" />
+    <Compile Include="FacebookServiceFacade.cs" />
     <Compile Include="PhotosAndLikes.cs" />
     <Compile Include="TextFillForm.cs">
       <SubType>Form</SubType>

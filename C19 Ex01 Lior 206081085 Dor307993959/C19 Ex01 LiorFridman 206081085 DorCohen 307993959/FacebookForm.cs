@@ -36,10 +36,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
                 if (m_FacebookManager.AppSettingsInstance.RememberUser &&
                     !string.IsNullOrEmpty(m_FacebookManager.AppSettingsInstance.AccessToken))
                 {
-                    m_FacebookManager.Connect();
-                    m_RemberMeCheckbox.Enabled = true;
-                    m_LoginLogoutBtn.Text = "Logout";
-                    this.fetchUserInfo();
+					login();
                 }
             }
             catch (Exception ex)
@@ -48,14 +45,19 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
             }
         }
 
+		private void login()
+		{
+			m_FacebookManager.Login();
+			m_RemberMeCheckbox.Enabled = true;
+			m_LoginLogoutBtn.Text = "Logout";
+			this.fetchUserInfo();
+		}
+
         private void loginLogoutBtn_Click(object sender, EventArgs e)
         {
             if (m_LoginLogoutBtn.Text == "Login")
             {
-                m_FacebookManager.Login();
-                m_LoginLogoutBtn.Text = "Logout";
-                m_RemberMeCheckbox.Enabled = true;
-                this.fetchUserInfo();
+				login();
             }
             else
             {

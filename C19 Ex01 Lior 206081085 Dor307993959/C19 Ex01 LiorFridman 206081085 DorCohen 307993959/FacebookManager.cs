@@ -19,39 +19,17 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public AppSettings AppSettingsInstance { get; set;  }
 
+		public FacebookServiceFacade FaceBookServiceFacade { get; set; }
+
 		public FacebookManager()
 		{
 			AppSettingsInstance = AppSettings.LoadFromFile();
+			FaceBookServiceFacade = new FacebookServiceFacade();
 		}
 
 		public void Login()
 		{
-			LoginResult = FacebookService.Login(
-                "1450160541956417",
-			   "public_profile",
-			   "email",
-			   "publish_to_groups",
-			   "user_birthday",
-			   "user_age_range",
-			   "user_gender",
-			   "user_link",
-			   "user_tagged_places",
-			   "user_videos",
-			   "publish_to_groups",
-			   "groups_access_member_info",
-			   "user_friends",
-			   "user_events",
-			   "user_likes",
-			   "user_location",
-			   "user_photos",
-			   "user_posts",
-			   "user_hometown");
-				LoggedInUser = LoginResult.LoggedInUser;
-		}
-
-		public void Connect()
-		{
-			LoginResult = FacebookService.Connect(this.AppSettingsInstance.AccessToken);
+			LoginResult = FaceBookServiceFacade.Login();
 			LoggedInUser = LoginResult.LoggedInUser;
 		}
 
@@ -86,7 +64,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public void Logout()
 		{
-			FacebookService.Logout(null);
+			FaceBookServiceFacade.Logout();
 			LoggedInUser = null;
 			LoginResult = null;
 			AppSettingsInstance.RememberUser = false;
