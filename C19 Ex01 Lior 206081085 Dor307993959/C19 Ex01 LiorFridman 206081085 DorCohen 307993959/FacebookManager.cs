@@ -11,7 +11,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-	public class FacebookManager
+	public sealed class FacebookManager
 	{
 		public User LoggedInUser { get; set;  }
 

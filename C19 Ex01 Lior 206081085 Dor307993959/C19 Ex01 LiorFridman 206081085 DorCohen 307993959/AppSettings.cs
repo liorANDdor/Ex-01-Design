@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
-public sealed class AppSettings
+	public sealed class AppSettings
 	{
 		private static AppSettings m_AppSettings = null;
 
@@ -61,8 +61,8 @@ public sealed class AppSettings
 		{
 			using (Stream stream = new FileStream(Path.Combine(Directory.GetCurrentDirectory(), "AppSettings.xml"), FileMode.Create))
 			{
-                XmlSerializer serializer = new XmlSerializer(this.GetType());
-                serializer.Serialize(stream, this);
+				XmlSerializer serializer = new XmlSerializer(this.GetType());
+				serializer.Serialize(stream, this);
 			}
 		}
 	}
