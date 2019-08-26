@@ -19,9 +19,21 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public AppSettings AppSettingsInstance { get; set;  }
 
+		private static FacebookManager m_FacebookManager = null;
+
+		public static FacebookManager GetInstance()
+		{
+			if(m_FacebookManager == null)
+			{
+				m_FacebookManager = new FacebookManager();
+			}
+
+			return m_FacebookManager;
+		}
+
 		public FacebookServiceFacade FaceBookServiceFacade { get; set; }
 
-		public FacebookManager()
+		private FacebookManager()
 		{
 			AppSettingsInstance = AppSettings.LoadFromFile();
 			FaceBookServiceFacade = new FacebookServiceFacade();

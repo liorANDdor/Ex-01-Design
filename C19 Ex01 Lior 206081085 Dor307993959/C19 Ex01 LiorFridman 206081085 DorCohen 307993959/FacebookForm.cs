@@ -16,7 +16,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
         public FacebookForm()
         {
             this.InitializeComponent();
-            m_FacebookManager = new FacebookManager();
+            m_FacebookManager = FacebookManager.GetInstance();
 
             if (m_FacebookManager.AppSettingsInstance.RememberUser)
             {
@@ -61,18 +61,22 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				login();
             }
             else
-            {
-                m_FacebookManager.Logout();
-                m_RemberMeCheckbox.Enabled = false;
-                m_RemberMeCheckbox.Checked = false;
-                cleanUI();
-                m_LoginLogoutBtn.Text = "Login";
-            }
-        }
+			{
+				logout();
+			}
+		}
 
-        private void cleanUI()
+		private void logout()
+		{
+			m_FacebookManager.Logout();
+			m_RemberMeCheckbox.Enabled = false;
+			m_RemberMeCheckbox.Checked = false;
+			cleanUI();
+			m_LoginLogoutBtn.Text = "Login";
+		}
+
+		private void cleanUI()
         {
-            m_PostListBox.Items.Clear();
             m_FriendListBox.Items.Clear();
             m_GroupListBox.Items.Clear();
             m_PictureProfileFeature.Image = null;
@@ -139,26 +143,26 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			postBindingSource.DataSource = m_FacebookManager.LoggedInUser.Posts;
         }
 
-        private void postBtn_Click(object sender, EventArgs e)
-        {
-            TextFillForm newPost = new TextFillForm();
-            newPost.ShowDialog();
-            if (!string.IsNullOrEmpty(newPost.UserInput)
-                && !newPost.IsCanceled)
-            {
-                try
-                {
-                    m_FacebookManager.LoggedInUser.PostStatus(newPost.UserInput);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Nothing was happened");
-            }
+		private void postBtn_Click(object sender, EventArgs e)
+		{
+			TextFillForm newPost = new TextFillForm();
+			newPost.ShowDialog();
+			if (!string.IsNullOrEmpty(newPost.UserInput)
+				&& !newPost.IsCanceled)
+			{
+				try
+				{
+					m_FacebookManager.LoggedInUser.PostStatus(newPost.UserInput);
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
+			}
+			else
+			{
+				MessageBox.Show("Nothing was happened");
+			}
         }
 
         private void runFindMatchBtn_Click(object sender, EventArgs e)

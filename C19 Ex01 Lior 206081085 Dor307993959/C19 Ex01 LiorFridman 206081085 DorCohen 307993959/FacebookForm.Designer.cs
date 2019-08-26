@@ -31,11 +31,17 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.TabPage m_MainTab;
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacebookForm));
 			System.Windows.Forms.Label createdTimeLabel;
 			System.Windows.Forms.Label descriptionLabel;
 			System.Windows.Forms.Label nameLabel;
 			System.Windows.Forms.Label updateTimeLabel;
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacebookForm));
+			System.Windows.Forms.Label likesCountLabel;
+			this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.descriptionTextBox = new System.Windows.Forms.TextBox();
+			this.nameLabel1 = new System.Windows.Forms.Label();
+			this.updateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.m_FriendListBox = new System.Windows.Forms.ListBox();
 			this.m_GroupListBox = new System.Windows.Forms.ListBox();
 			this.label7 = new System.Windows.Forms.Label();
@@ -64,18 +70,16 @@
 			this.m_BestTImePic = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.m_BestPhotoBtn = new System.Windows.Forms.Button();
-			this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
-			this.descriptionTextBox = new System.Windows.Forms.TextBox();
-			this.nameLabel1 = new System.Windows.Forms.Label();
-			this.updateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.commentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.likesCountLabel1 = new System.Windows.Forms.Label();
 			m_MainTab = new System.Windows.Forms.TabPage();
 			createdTimeLabel = new System.Windows.Forms.Label();
 			descriptionLabel = new System.Windows.Forms.Label();
 			nameLabel = new System.Windows.Forms.Label();
 			updateTimeLabel = new System.Windows.Forms.Label();
+			likesCountLabel = new System.Windows.Forms.Label();
 			m_MainTab.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).BeginInit();
 			this.m_FindMatchTab.SuspendLayout();
@@ -84,7 +88,6 @@
 			this.m_Bar.SuspendLayout();
 			this.secondfeature.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_BestTImePic)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -92,6 +95,8 @@
 			// 
 			m_MainTab.AutoScroll = true;
 			m_MainTab.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			m_MainTab.Controls.Add(likesCountLabel);
+			m_MainTab.Controls.Add(this.likesCountLabel1);
 			m_MainTab.Controls.Add(createdTimeLabel);
 			m_MainTab.Controls.Add(this.createdTimeDateTimePicker);
 			m_MainTab.Controls.Add(descriptionLabel);
@@ -116,6 +121,87 @@
 			m_MainTab.Size = new System.Drawing.Size(873, 364);
 			m_MainTab.TabIndex = 0;
 			m_MainTab.Text = "Main";
+			// 
+			// createdTimeLabel
+			// 
+			createdTimeLabel.AutoSize = true;
+			createdTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			createdTimeLabel.Location = new System.Drawing.Point(484, 208);
+			createdTimeLabel.Name = "createdTimeLabel";
+			createdTimeLabel.Size = new System.Drawing.Size(93, 16);
+			createdTimeLabel.TabIndex = 12;
+			createdTimeLabel.Text = "Created Time:";
+			// 
+			// createdTimeDateTimePicker
+			// 
+			this.createdTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "CreatedTime", true));
+			this.createdTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.createdTimeDateTimePicker.Location = new System.Drawing.Point(590, 206);
+			this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
+			this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+			this.createdTimeDateTimePicker.TabIndex = 13;
+			// 
+			// postBindingSource
+			// 
+			this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+			// 
+			// descriptionLabel
+			// 
+			descriptionLabel.AutoSize = true;
+			descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			descriptionLabel.Location = new System.Drawing.Point(484, 235);
+			descriptionLabel.Name = "descriptionLabel";
+			descriptionLabel.Size = new System.Drawing.Size(79, 16);
+			descriptionLabel.TabIndex = 14;
+			descriptionLabel.Text = "Description:";
+			// 
+			// descriptionTextBox
+			// 
+			this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Description", true));
+			this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.descriptionTextBox.Location = new System.Drawing.Point(590, 232);
+			this.descriptionTextBox.Name = "descriptionTextBox";
+			this.descriptionTextBox.Size = new System.Drawing.Size(200, 22);
+			this.descriptionTextBox.TabIndex = 15;
+			// 
+			// nameLabel
+			// 
+			nameLabel.AutoSize = true;
+			nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			nameLabel.Location = new System.Drawing.Point(484, 265);
+			nameLabel.Name = "nameLabel";
+			nameLabel.Size = new System.Drawing.Size(48, 16);
+			nameLabel.TabIndex = 16;
+			nameLabel.Text = "Name:";
+			// 
+			// nameLabel1
+			// 
+			this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Name", true));
+			this.nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.nameLabel1.Location = new System.Drawing.Point(590, 265);
+			this.nameLabel1.Name = "nameLabel1";
+			this.nameLabel1.Size = new System.Drawing.Size(200, 23);
+			this.nameLabel1.TabIndex = 17;
+			this.nameLabel1.Text = "label8";
+			// 
+			// updateTimeLabel
+			// 
+			updateTimeLabel.AutoSize = true;
+			updateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			updateTimeLabel.Location = new System.Drawing.Point(484, 298);
+			updateTimeLabel.Name = "updateTimeLabel";
+			updateTimeLabel.Size = new System.Drawing.Size(90, 16);
+			updateTimeLabel.TabIndex = 18;
+			updateTimeLabel.Text = "Update Time:";
+			// 
+			// updateTimeDateTimePicker
+			// 
+			this.updateTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "UpdateTime", true));
+			this.updateTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.updateTimeDateTimePicker.Location = new System.Drawing.Point(590, 293);
+			this.updateTimeDateTimePicker.Name = "updateTimeDateTimePicker";
+			this.updateTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+			this.updateTimeDateTimePicker.TabIndex = 19;
 			// 
 			// m_FriendListBox
 			// 
@@ -245,7 +331,7 @@
 			this.m_FindMatchTab.Location = new System.Drawing.Point(4, 22);
 			this.m_FindMatchTab.Name = "m_FindMatchTab";
 			this.m_FindMatchTab.Padding = new System.Windows.Forms.Padding(3);
-			this.m_FindMatchTab.Size = new System.Drawing.Size(819, 340);
+			this.m_FindMatchTab.Size = new System.Drawing.Size(873, 364);
 			this.m_FindMatchTab.TabIndex = 1;
 			this.m_FindMatchTab.Text = "Find your match";
 			// 
@@ -362,7 +448,7 @@
 			this.m_Bar.Controls.Add(this.m_FindMatchTab);
 			this.m_Bar.Controls.Add(this.secondfeature);
 			this.m_Bar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.m_Bar.Location = new System.Drawing.Point(0, 112);
+			this.m_Bar.Location = new System.Drawing.Point(0, 109);
 			this.m_Bar.Name = "m_Bar";
 			this.m_Bar.SelectedIndex = 0;
 			this.m_Bar.Size = new System.Drawing.Size(881, 390);
@@ -378,7 +464,7 @@
 			this.secondfeature.Location = new System.Drawing.Point(4, 22);
 			this.secondfeature.Name = "secondfeature";
 			this.secondfeature.Padding = new System.Windows.Forms.Padding(3);
-			this.secondfeature.Size = new System.Drawing.Size(819, 340);
+			this.secondfeature.Size = new System.Drawing.Size(873, 364);
 			this.secondfeature.TabIndex = 2;
 			this.secondfeature.Text = "Best time for picture post";
 			// 
@@ -424,98 +510,38 @@
 			this.m_BestPhotoBtn.UseVisualStyleBackColor = false;
 			this.m_BestPhotoBtn.Click += new System.EventHandler(this.bestPhotoBtn_Click);
 			// 
-			// postBindingSource
-			// 
-			this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
-			// 
-			// createdTimeLabel
-			// 
-			createdTimeLabel.AutoSize = true;
-			createdTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			createdTimeLabel.Location = new System.Drawing.Point(472, 206);
-			createdTimeLabel.Name = "createdTimeLabel";
-			createdTimeLabel.Size = new System.Drawing.Size(93, 16);
-			createdTimeLabel.TabIndex = 12;
-			createdTimeLabel.Text = "Created Time:";
-			// 
-			// createdTimeDateTimePicker
-			// 
-			this.createdTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "CreatedTime", true));
-			this.createdTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.createdTimeDateTimePicker.Location = new System.Drawing.Point(590, 206);
-			this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
-			this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
-			this.createdTimeDateTimePicker.TabIndex = 13;
-			// 
-			// descriptionLabel
-			// 
-			descriptionLabel.AutoSize = true;
-			descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			descriptionLabel.Location = new System.Drawing.Point(472, 231);
-			descriptionLabel.Name = "descriptionLabel";
-			descriptionLabel.Size = new System.Drawing.Size(79, 16);
-			descriptionLabel.TabIndex = 14;
-			descriptionLabel.Text = "Description:";
-			// 
-			// descriptionTextBox
-			// 
-			this.descriptionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Description", true));
-			this.descriptionTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.descriptionTextBox.Location = new System.Drawing.Point(590, 232);
-			this.descriptionTextBox.Name = "descriptionTextBox";
-			this.descriptionTextBox.Size = new System.Drawing.Size(200, 22);
-			this.descriptionTextBox.TabIndex = 15;
-			// 
-			// nameLabel
-			// 
-			nameLabel.AutoSize = true;
-			nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			nameLabel.Location = new System.Drawing.Point(472, 255);
-			nameLabel.Name = "nameLabel";
-			nameLabel.Size = new System.Drawing.Size(48, 16);
-			nameLabel.TabIndex = 16;
-			nameLabel.Text = "Name:";
-			// 
-			// nameLabel1
-			// 
-			this.nameLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postBindingSource, "Name", true));
-			this.nameLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.nameLabel1.Location = new System.Drawing.Point(590, 258);
-			this.nameLabel1.Name = "nameLabel1";
-			this.nameLabel1.Size = new System.Drawing.Size(200, 23);
-			this.nameLabel1.TabIndex = 17;
-			this.nameLabel1.Text = "label8";
-			// 
-			// updateTimeLabel
-			// 
-			updateTimeLabel.AutoSize = true;
-			updateTimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			updateTimeLabel.Location = new System.Drawing.Point(472, 281);
-			updateTimeLabel.Name = "updateTimeLabel";
-			updateTimeLabel.Size = new System.Drawing.Size(90, 16);
-			updateTimeLabel.TabIndex = 18;
-			updateTimeLabel.Text = "Update Time:";
-			// 
-			// updateTimeDateTimePicker
-			// 
-			this.updateTimeDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.postBindingSource, "UpdateTime", true));
-			this.updateTimeDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.updateTimeDateTimePicker.Location = new System.Drawing.Point(590, 281);
-			this.updateTimeDateTimePicker.Name = "updateTimeDateTimePicker";
-			this.updateTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
-			this.updateTimeDateTimePicker.TabIndex = 19;
-			// 
 			// commentsBindingSource
 			// 
 			this.commentsBindingSource.DataMember = "Comments";
 			this.commentsBindingSource.DataSource = this.postBindingSource;
+			// 
+			// likesCountLabel
+			// 
+			likesCountLabel.AutoSize = true;
+			likesCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			likesCountLabel.Location = new System.Drawing.Point(484, 324);
+			likesCountLabel.Name = "likesCountLabel";
+			likesCountLabel.Size = new System.Drawing.Size(80, 16);
+			likesCountLabel.TabIndex = 19;
+			likesCountLabel.Text = "Likes Count:";
+			// 
+			// likesCountLabel1
+			// 
+			this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.commentsBindingSource, "LikesCount", true));
+			this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.commentsBindingSource, "LikesCount", true));
+			this.likesCountLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.likesCountLabel1.Location = new System.Drawing.Point(590, 324);
+			this.likesCountLabel1.Name = "likesCountLabel1";
+			this.likesCountLabel1.Size = new System.Drawing.Size(100, 23);
+			this.likesCountLabel1.TabIndex = 20;
+			this.likesCountLabel1.Text = "label8";
 			// 
 			// FacebookForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-			this.ClientSize = new System.Drawing.Size(881, 502);
+			this.ClientSize = new System.Drawing.Size(881, 499);
 			this.Controls.Add(this.m_FaceBookBarPic);
 			this.Controls.Add(this.m_Bar);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -524,6 +550,7 @@
 			this.Text = "Facebook Application";
 			m_MainTab.ResumeLayout(false);
 			m_MainTab.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).EndInit();
 			this.m_FindMatchTab.ResumeLayout(false);
@@ -534,7 +561,6 @@
 			this.secondfeature.ResumeLayout(false);
 			this.secondfeature.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_BestTImePic)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
@@ -576,5 +602,6 @@
 		private System.Windows.Forms.Label nameLabel1;
 		private System.Windows.Forms.DateTimePicker updateTimeDateTimePicker;
 		private System.Windows.Forms.BindingSource commentsBindingSource;
+		private System.Windows.Forms.Label likesCountLabel1;
 	}
 }
