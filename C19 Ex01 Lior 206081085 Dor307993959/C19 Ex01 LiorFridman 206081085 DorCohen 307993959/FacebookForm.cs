@@ -16,7 +16,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
     {
 		private FacebookManager m_FacebookManager;
 
-		private object MatchFeatureLocker = new object();
+		private readonly object sr_MatchFeatureLocker = new object();
 
 		public FacebookForm()
         {
@@ -152,7 +152,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		private void findMatch()
 		{
-			lock (MatchFeatureLocker)
+			lock (sr_MatchFeatureLocker)
 			{
 				foreach (Control control in this.m_FindMatchTab.Controls)
 				{
