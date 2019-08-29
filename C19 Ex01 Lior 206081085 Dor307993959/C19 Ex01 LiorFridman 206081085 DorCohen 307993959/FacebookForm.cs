@@ -137,17 +137,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
         private void fetchUserPosts()
         {
-			/*
-            List<string> userPosts = m_FacebookManager.FetchUserPosts();
-            foreach (string post in userPosts)
-            {
-                m_PostListBox.Items.Add(post);
-            }
-
-            if (userPosts.Count == 0)
-            {
-                m_PostListBox.Items.Add("No Posts to retrieve :(");
-            }*/
 			postBindingSource.DataSource = m_FacebookManager.LoggedInUser.Posts;
         }
 
@@ -188,7 +177,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 			try
 			{
-				m_FacebookManager.FindYourMatch();
+				m_FacebookManager.StartMatchFeature();
 				m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.getPic());
 				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
 																			"\n friend a message? "));

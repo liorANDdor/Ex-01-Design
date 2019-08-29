@@ -15,10 +15,10 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public MatchFinderFeature()
 		{
-			MatchType = MatchType.Group;
+			MatchType = MatchType.Groups;
 		}
 
-		public void FindMatch(User i_LoggedInUser)
+		public void SetMatcherAndFindMatch(User i_LoggedInUser)
 		{
 			setMatcherByType();
 			m_Matcher.FindMatch(i_LoggedInUser);

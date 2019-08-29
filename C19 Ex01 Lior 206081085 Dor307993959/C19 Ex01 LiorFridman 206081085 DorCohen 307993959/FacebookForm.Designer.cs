@@ -506,7 +506,7 @@
 			this.m_MatchGroupRadioBtn.AutoSize = true;
 			this.m_MatchGroupRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
 			this.m_MatchGroupRadioBtn.Location = new System.Drawing.Point(43, 75);
-			this.m_MatchGroupRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Group;
+			this.m_MatchGroupRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Groups;
 			this.m_MatchGroupRadioBtn.Name = "m_MatchGroupRadioBtn";
 			this.m_MatchGroupRadioBtn.Size = new System.Drawing.Size(144, 24);
 			this.m_MatchGroupRadioBtn.TabIndex = 13;
@@ -519,7 +519,7 @@
 			this.m_MatchFriendRadioBtn.AutoSize = true;
 			this.m_MatchFriendRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
 			this.m_MatchFriendRadioBtn.Location = new System.Drawing.Point(43, 108);
-			this.m_MatchFriendRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Friend;
+			this.m_MatchFriendRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Friends;
 			this.m_MatchFriendRadioBtn.Name = "m_MatchFriendRadioBtn";
 			this.m_MatchFriendRadioBtn.Size = new System.Drawing.Size(143, 24);
 			this.m_MatchFriendRadioBtn.TabIndex = 14;
@@ -532,7 +532,7 @@
 			this.m_MatchPhotoRadioBtn.AutoSize = true;
 			this.m_MatchPhotoRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
 			this.m_MatchPhotoRadioBtn.Location = new System.Drawing.Point(43, 138);
-			this.m_MatchPhotoRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Photo;
+			this.m_MatchPhotoRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Photos;
 			this.m_MatchPhotoRadioBtn.Name = "m_MatchPhotoRadioBtn";
 			this.m_MatchPhotoRadioBtn.Size = new System.Drawing.Size(144, 24);
 			this.m_MatchPhotoRadioBtn.TabIndex = 15;

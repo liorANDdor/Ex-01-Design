@@ -11,17 +11,17 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		public static IMatcher getMatcher(MatchType i_MatchType)
 		{
 			IMatcher matcher = null;
-			if (i_MatchType == MatchType.Group)
+			if (i_MatchType == MatchType.Groups)
 			{
-				matcher = new GroupMatcher();
+				matcher = new MatcherByGroups();
 			}
-			else if (i_MatchType == MatchType.Friend)
+			else if (i_MatchType == MatchType.Friends)
 			{
-				matcher = new FriendMatcher();
+				matcher = new MatcherByFriends();
 			}
-			else if (i_MatchType == MatchType.Photo)
+			else if (i_MatchType == MatchType.Photos)
 			{
-				matcher = new PhotoMatcher();
+				matcher = new MatcherByPhotos();
 			}
 
 			return matcher;

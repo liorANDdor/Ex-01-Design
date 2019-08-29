@@ -42,9 +42,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			FaceBookServiceFacade = new FacebookServiceFacade();
 		}
 
-		public void FindYourMatch()
+		public void StartMatchFeature()
 		{
-			MatchFinder.FindMatch(LoggedInUser);
+			MatchFinder.SetMatcherAndFindMatch(LoggedInUser);
 		}
 		
 		public void Login()
