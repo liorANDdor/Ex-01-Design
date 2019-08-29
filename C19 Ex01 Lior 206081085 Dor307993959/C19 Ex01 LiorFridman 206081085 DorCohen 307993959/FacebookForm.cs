@@ -16,6 +16,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
     {
 		private FacebookManager m_FacebookManager;
 
+		private object MatchFeatureLocker = new object();
+
 		public FacebookForm()
         {
             this.InitializeComponent();
@@ -150,35 +152,39 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		private void findMatch()
 		{
-			foreach (Control control in this.m_FindMatchTab.Controls)
+			lock (MatchFeatureLocker)
 			{
-				if (control is MatchTypeRadioBtn)
+				foreach (Control control in this.m_FindMatchTab.Controls)
 				{
-					if ((control as MatchTypeRadioBtn).Checked)
+					if (control is MatchTypeRadioBtn)
 					{
-						m_FacebookManager.MatchFinder.MatchType = (control as MatchTypeRadioBtn).MatchType;
+						if ((control as MatchTypeRadioBtn).Checked)
+						{
+							m_FacebookManager.MatchFinder.MatchType = (control as MatchTypeRadioBtn).MatchType;
+						}
 					}
 				}
-			}
 
-			try
-			{
-				m_FacebookManager.StartMatchFeature();
-				m_PictureProfileMatch.Invoke(new Action(()=> 
-				m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.Matcher.BestMatch.PictureNormalURL)));
-				m_PictureProfileFeature.Invoke(new Action(() =>
-				m_PictureProfileFeature.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL)));
-				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
-																			"\n friend a message? "));
-				sendEmailChoice.ShowDialog();
-				if (sendEmailChoice.Choice)
+				try
 				{
-					m_FacebookManager.SendMail(m_FacebookManager.MatchFinder.Matcher.BestMatch.Email);
+					m_FacebookManager.StartMatchFeature();
+
+					m_PictureProfileMatch.Invoke(new Action(() =>
+					m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.Matcher.BestMatch.PictureNormalURL)));
+					m_PictureProfileFeature.Invoke(new Action(() =>
+					m_PictureProfileFeature.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL)));
+					UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
+																				"\n friend a message? "));
+					sendEmailChoice.ShowDialog();
+					if (sendEmailChoice.Choice)
+					{
+						m_FacebookManager.SendMail(m_FacebookManager.MatchFinder.Matcher.BestMatch.Email);
+					}
 				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
 			}
 		}
 

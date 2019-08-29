@@ -11,7 +11,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 	{
 		public User BestMatch { get; set; }
 
-
 		public void FindMatch(User i_LoggedInUser)
 		{
 			FacebookObjectCollection<User> friendsOfUser = i_LoggedInUser.Friends;
@@ -42,9 +41,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					theMostLikerFriend = likesOfFriend;
 				}
 			}
+
 			BestMatch = theMostLikerFriend.Key;
-			
-		
 		}
 	}
 }

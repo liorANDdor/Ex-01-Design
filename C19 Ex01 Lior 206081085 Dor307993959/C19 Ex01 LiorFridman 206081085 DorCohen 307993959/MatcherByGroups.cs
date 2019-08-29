@@ -38,8 +38,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					myMatch = friend;
 				}
 			}
+
 			BestMatch = myMatch;
-			
 		}
 	}
 }
