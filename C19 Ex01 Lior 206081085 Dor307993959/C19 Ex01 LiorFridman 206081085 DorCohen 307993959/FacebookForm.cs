@@ -14,9 +14,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
     public partial class FacebookForm : Form
     {
-		private FacebookManager m_FacebookManager;
-
 		private readonly object sr_MatchFeatureLocker = new object();
+
+		private FacebookManager m_FacebookManager;
 
 		public FacebookForm()
         {

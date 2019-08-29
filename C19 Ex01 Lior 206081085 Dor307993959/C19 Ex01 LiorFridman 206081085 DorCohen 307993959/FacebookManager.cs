@@ -90,28 +90,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			AppSettingsInstance.RememberUser = false;
 		}
 
-		internal List<string> FetchUserFriends()
-		{
-			List<string> friendsList = new List<string>();
-			foreach (User friend in LoggedInUser.Friends)
-			{
-				friendsList.Add(friend.Name);
-			}
-
-			return friendsList;
-		}
-
-		internal List<Group> FetchUserGroups()
-		{
-			List<Group> groupList = new List<Group>();
-			foreach (Group group in LoggedInUser.Groups)
-			{
-				groupList.Add(group);
-			}
-
-			return groupList;
-		}
-
 		public int FindBestTimeToUploadAPicture(List<string> io_Pictures)
 		{
 			FacebookObjectCollection<Album> albums;
