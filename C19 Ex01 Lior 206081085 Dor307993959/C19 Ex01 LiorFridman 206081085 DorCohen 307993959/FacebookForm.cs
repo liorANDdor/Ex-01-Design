@@ -168,7 +168,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 				try
 				{
 					m_FacebookManager.StartMatchFeature();
-
 					m_PictureProfileMatch.Invoke(new Action(() =>
 					m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.Matcher.BestMatch.PictureNormalURL)));
 					m_PictureProfileFeature.Invoke(new Action(() =>
