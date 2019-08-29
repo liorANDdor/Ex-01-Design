@@ -23,6 +23,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		public MatchFinderFeature MatchFinder { get; set; }
 
+		public FacebookServiceFacade FaceBookServiceFacade { get; set; }
+
 		public static FacebookManager GetInstance()
 		{
 			if(m_FacebookManager == null)
@@ -32,8 +34,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 			return m_FacebookManager;
 		}
-
-		public FacebookServiceFacade FaceBookServiceFacade { get; set; }
 
 		private FacebookManager()
 		{

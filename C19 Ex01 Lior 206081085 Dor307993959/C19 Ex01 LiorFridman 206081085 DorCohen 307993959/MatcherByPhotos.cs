@@ -9,11 +9,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
 	public class MatcherByPhotos : IMatcher
 	{
-		public string Mail { get; set; }
+		public User BestMatch { get; set; }
 
-		public string Name { get; set; }
-
-		public string Picture { get; set; }
 
 		public void FindMatch(User i_LoggedInUser)
 		{
@@ -45,9 +42,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 					theMostLikerFriend = likesOfFriend;
 				}
 			}
-
-			Mail = theMostLikerFriend.Key.Email;
-			Picture = theMostLikerFriend.Key.PictureNormalURL;
+			BestMatch = theMostLikerFriend.Key;
+			
+		
 		}
 	}
 }

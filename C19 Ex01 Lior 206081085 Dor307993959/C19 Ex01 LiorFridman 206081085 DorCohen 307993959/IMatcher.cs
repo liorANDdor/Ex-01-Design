@@ -9,11 +9,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
 	public interface IMatcher
 	{
-		string Name { get; set; }
-
-		string Picture { get; set; }
-
-		string Mail { get; set; }
+		User BestMatch { get; set; }
 
 		void FindMatch(User i_LoggedInUser);
 	}

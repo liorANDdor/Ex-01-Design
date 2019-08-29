@@ -11,7 +11,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 	{
 		public MatchType MatchType { get; set; }
 
-		private IMatcher m_Matcher;
+		public IMatcher Matcher { get; set; }
 
 		public MatchFinderFeature()
 		{
@@ -21,27 +21,12 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		public void SetMatcherAndFindMatch(User i_LoggedInUser)
 		{
 			setMatcherByType();
-			m_Matcher.FindMatch(i_LoggedInUser);
+			Matcher.FindMatch(i_LoggedInUser);
 		}
 
 		private void setMatcherByType()
 		{
-			m_Matcher = FactoryMatcher.getMatcher(MatchType);
-		}
-
-		public string getPic()
-		{
-			return m_Matcher.Picture;
-		}
-
-		public string getName()
-		{
-			return m_Matcher.Name;
-		}
-
-		public string getMail()
-		{
-			return m_Matcher.Mail;
+			Matcher = FactoryMatcher.getMatcher(MatchType);
 		}
 	}
 }

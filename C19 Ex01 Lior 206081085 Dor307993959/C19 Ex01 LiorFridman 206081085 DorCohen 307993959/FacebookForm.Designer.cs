@@ -45,7 +45,9 @@
 			this.nameLabel1 = new System.Windows.Forms.Label();
 			this.updateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.m_FriendListBox = new System.Windows.Forms.ListBox();
+			this.friendListBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.m_GroupListBox = new System.Windows.Forms.ListBox();
+			this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.m_RemberMeCheckbox = new System.Windows.Forms.CheckBox();
@@ -56,6 +58,9 @@
 			this.m_ProfilePicMain = new System.Windows.Forms.PictureBox();
 			this.m_FaceBookBarPic = new System.Windows.Forms.PictureBox();
 			this.m_FindMatchTab = new System.Windows.Forms.TabPage();
+			this.m_MatchPhotoRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
+			this.m_MatchFriendRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
+			this.m_MatchGroupRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
 			this.m_ExplainOfMatchLabel = new System.Windows.Forms.Label();
 			this.m_RunMatchBtn = new System.Windows.Forms.Button();
 			this.label4 = new System.Windows.Forms.Label();
@@ -69,9 +74,6 @@
 			this.m_BestTImePic = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.m_BestPhotoBtn = new System.Windows.Forms.Button();
-			this.m_MatchGroupRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
-			this.m_MatchFriendRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
-			this.m_MatchPhotoRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
 			m_MainTab = new System.Windows.Forms.TabPage();
 			likesCountLabel = new System.Windows.Forms.Label();
 			createdTimeLabel = new System.Windows.Forms.Label();
@@ -81,6 +83,8 @@
 			m_MainTab.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.friendListBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).BeginInit();
 			this.m_FindMatchTab.SuspendLayout();
@@ -231,19 +235,31 @@
 			// 
 			// m_FriendListBox
 			// 
+			this.m_FriendListBox.DataSource = this.friendListBindingSource;
+			this.m_FriendListBox.DisplayMember = "Name";
 			this.m_FriendListBox.FormattingEnabled = true;
 			this.m_FriendListBox.Location = new System.Drawing.Point(232, 57);
 			this.m_FriendListBox.Name = "m_FriendListBox";
 			this.m_FriendListBox.Size = new System.Drawing.Size(216, 121);
 			this.m_FriendListBox.TabIndex = 12;
 			// 
+			// friendListBindingSource
+			// 
+			this.friendListBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.FriendList);
+			// 
 			// m_GroupListBox
 			// 
+			this.m_GroupListBox.DataSource = this.groupBindingSource;
+			this.m_GroupListBox.DisplayMember = "Name";
 			this.m_GroupListBox.FormattingEnabled = true;
 			this.m_GroupListBox.Location = new System.Drawing.Point(232, 235);
 			this.m_GroupListBox.Name = "m_GroupListBox";
 			this.m_GroupListBox.Size = new System.Drawing.Size(216, 121);
 			this.m_GroupListBox.TabIndex = 11;
+			// 
+			// groupBindingSource
+			// 
+			this.groupBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Group);
 			// 
 			// label7
 			// 
@@ -296,6 +312,7 @@
 			this.m_PostListBox.Name = "m_PostListBox";
 			this.m_PostListBox.Size = new System.Drawing.Size(357, 121);
 			this.m_PostListBox.TabIndex = 5;
+			this.m_PostListBox.ValueMember = "Description";
 			// 
 			// m_PostBtn
 			// 
@@ -360,6 +377,45 @@
 			this.m_FindMatchTab.Size = new System.Drawing.Size(873, 364);
 			this.m_FindMatchTab.TabIndex = 1;
 			this.m_FindMatchTab.Text = "Find your match";
+			// 
+			// m_MatchPhotoRadioBtn
+			// 
+			this.m_MatchPhotoRadioBtn.AutoSize = true;
+			this.m_MatchPhotoRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.m_MatchPhotoRadioBtn.Location = new System.Drawing.Point(43, 138);
+			this.m_MatchPhotoRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Photos;
+			this.m_MatchPhotoRadioBtn.Name = "m_MatchPhotoRadioBtn";
+			this.m_MatchPhotoRadioBtn.Size = new System.Drawing.Size(144, 24);
+			this.m_MatchPhotoRadioBtn.TabIndex = 15;
+			this.m_MatchPhotoRadioBtn.TabStop = true;
+			this.m_MatchPhotoRadioBtn.Text = "Match by photos";
+			this.m_MatchPhotoRadioBtn.UseVisualStyleBackColor = true;
+			// 
+			// m_MatchFriendRadioBtn
+			// 
+			this.m_MatchFriendRadioBtn.AutoSize = true;
+			this.m_MatchFriendRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.m_MatchFriendRadioBtn.Location = new System.Drawing.Point(43, 108);
+			this.m_MatchFriendRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Friends;
+			this.m_MatchFriendRadioBtn.Name = "m_MatchFriendRadioBtn";
+			this.m_MatchFriendRadioBtn.Size = new System.Drawing.Size(143, 24);
+			this.m_MatchFriendRadioBtn.TabIndex = 14;
+			this.m_MatchFriendRadioBtn.TabStop = true;
+			this.m_MatchFriendRadioBtn.Text = "Match by friends";
+			this.m_MatchFriendRadioBtn.UseVisualStyleBackColor = true;
+			// 
+			// m_MatchGroupRadioBtn
+			// 
+			this.m_MatchGroupRadioBtn.AutoSize = true;
+			this.m_MatchGroupRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.m_MatchGroupRadioBtn.Location = new System.Drawing.Point(43, 75);
+			this.m_MatchGroupRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Groups;
+			this.m_MatchGroupRadioBtn.Name = "m_MatchGroupRadioBtn";
+			this.m_MatchGroupRadioBtn.Size = new System.Drawing.Size(144, 24);
+			this.m_MatchGroupRadioBtn.TabIndex = 13;
+			this.m_MatchGroupRadioBtn.TabStop = true;
+			this.m_MatchGroupRadioBtn.Text = "Match by groups";
+			this.m_MatchGroupRadioBtn.UseVisualStyleBackColor = true;
 			// 
 			// m_ExplainOfMatchLabel
 			// 
@@ -501,45 +557,6 @@
 			this.m_BestPhotoBtn.UseVisualStyleBackColor = false;
 			this.m_BestPhotoBtn.Click += new System.EventHandler(this.bestPhotoBtn_Click);
 			// 
-			// m_MatchGroupRadioBtn
-			// 
-			this.m_MatchGroupRadioBtn.AutoSize = true;
-			this.m_MatchGroupRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_MatchGroupRadioBtn.Location = new System.Drawing.Point(43, 75);
-			this.m_MatchGroupRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Groups;
-			this.m_MatchGroupRadioBtn.Name = "m_MatchGroupRadioBtn";
-			this.m_MatchGroupRadioBtn.Size = new System.Drawing.Size(144, 24);
-			this.m_MatchGroupRadioBtn.TabIndex = 13;
-			this.m_MatchGroupRadioBtn.TabStop = true;
-			this.m_MatchGroupRadioBtn.Text = "Match by groups";
-			this.m_MatchGroupRadioBtn.UseVisualStyleBackColor = true;
-			// 
-			// m_MatchFriendRadioBtn
-			// 
-			this.m_MatchFriendRadioBtn.AutoSize = true;
-			this.m_MatchFriendRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_MatchFriendRadioBtn.Location = new System.Drawing.Point(43, 108);
-			this.m_MatchFriendRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Friends;
-			this.m_MatchFriendRadioBtn.Name = "m_MatchFriendRadioBtn";
-			this.m_MatchFriendRadioBtn.Size = new System.Drawing.Size(143, 24);
-			this.m_MatchFriendRadioBtn.TabIndex = 14;
-			this.m_MatchFriendRadioBtn.TabStop = true;
-			this.m_MatchFriendRadioBtn.Text = "Match by friends";
-			this.m_MatchFriendRadioBtn.UseVisualStyleBackColor = true;
-			// 
-			// m_MatchPhotoRadioBtn
-			// 
-			this.m_MatchPhotoRadioBtn.AutoSize = true;
-			this.m_MatchPhotoRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_MatchPhotoRadioBtn.Location = new System.Drawing.Point(43, 138);
-			this.m_MatchPhotoRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Photos;
-			this.m_MatchPhotoRadioBtn.Name = "m_MatchPhotoRadioBtn";
-			this.m_MatchPhotoRadioBtn.Size = new System.Drawing.Size(144, 24);
-			this.m_MatchPhotoRadioBtn.TabIndex = 15;
-			this.m_MatchPhotoRadioBtn.TabStop = true;
-			this.m_MatchPhotoRadioBtn.Text = "Match by photos";
-			this.m_MatchPhotoRadioBtn.UseVisualStyleBackColor = true;
-			// 
 			// FacebookForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,6 +573,8 @@
 			m_MainTab.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.friendListBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).EndInit();
 			this.m_FindMatchTab.ResumeLayout(false);
@@ -607,5 +626,7 @@
 		private MatchTypeRadioBtn m_MatchPhotoRadioBtn;
 		private MatchTypeRadioBtn m_MatchFriendRadioBtn;
 		private MatchTypeRadioBtn m_MatchGroupRadioBtn;
+		private System.Windows.Forms.BindingSource friendListBindingSource;
+		private System.Windows.Forms.BindingSource groupBindingSource;
 	}
 }

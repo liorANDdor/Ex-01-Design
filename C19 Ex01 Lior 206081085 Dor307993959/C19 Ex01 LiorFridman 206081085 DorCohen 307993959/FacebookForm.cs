@@ -14,7 +14,9 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
     public partial class FacebookForm : Form
     {
-        public FacebookForm()
+		private FacebookManager m_FacebookManager;
+
+		public FacebookForm()
         {
             this.InitializeComponent();
             m_FacebookManager = FacebookManager.GetInstance();
@@ -27,8 +29,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
                 this.m_RemberMeCheckbox.Checked = m_FacebookManager.AppSettingsInstance.RememberUser;
             }
         }
-
-        private FacebookManager m_FacebookManager;
 
         protected override void OnShown(EventArgs e)
         {
@@ -108,31 +108,12 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
         private void fetchUserFriends()
         {
-            List<string> userFriends = m_FacebookManager.FetchUserFriends();
-            foreach (string friend in userFriends)
-            {
-                m_FriendListBox.Items.Add(friend);
-            }
-
-            if (userFriends.Count == 0)
-            {
-                m_FriendListBox.Items.Add("No friends to retrieve :(");
-            }
+			friendListBindingSource.DataSource = m_FacebookManager.LoggedInUser.FriendLists;
         }
 
         private void fetchUserGroups()
         {
-			m_GroupListBox.DisplayMember = "Name";
-            List<Group> userGroups = m_FacebookManager.FetchUserGroups();
-            foreach (Group group in userGroups)
-            {
-                m_GroupListBox.Items.Add(group);
-            }
-
-            if (userGroups.Count == 0)
-            {
-                m_GroupListBox.Items.Add("No Groups to retrieve :(");
-            }
+			groupBindingSource.DataSource = m_FacebookManager.LoggedInUser.Groups;
         }
 
         private void fetchUserPosts()
@@ -164,11 +145,16 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
         private void runFindMatchBtn_Click(object sender, EventArgs e)
 		{
-			foreach(Control control in this.m_FindMatchTab.Controls)
+			new Thread(findMatch).Start();
+		}
+
+		private void findMatch()
+		{
+			foreach (Control control in this.m_FindMatchTab.Controls)
 			{
-				if(control is MatchTypeRadioBtn)
+				if (control is MatchTypeRadioBtn)
 				{
-					if((control as MatchTypeRadioBtn).Checked)
+					if ((control as MatchTypeRadioBtn).Checked)
 					{
 						m_FacebookManager.MatchFinder.MatchType = (control as MatchTypeRadioBtn).MatchType;
 					}
@@ -178,16 +164,19 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			try
 			{
 				m_FacebookManager.StartMatchFeature();
-				m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.getPic());
+				m_PictureProfileMatch.Invoke(new Action(()=> 
+				m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.Matcher.BestMatch.PictureNormalURL)));
+				m_PictureProfileFeature.Invoke(new Action(() =>
+				m_PictureProfileFeature.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL)));
 				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
 																			"\n friend a message? "));
 				sendEmailChoice.ShowDialog();
 				if (sendEmailChoice.Choice)
 				{
-					m_FacebookManager.SendMail(m_FacebookManager.MatchFinder.getMail());
+					m_FacebookManager.SendMail(m_FacebookManager.MatchFinder.Matcher.BestMatch.Email);
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
 			}
