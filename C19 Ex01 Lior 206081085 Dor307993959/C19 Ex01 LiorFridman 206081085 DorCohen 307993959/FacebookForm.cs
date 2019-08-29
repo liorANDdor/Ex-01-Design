@@ -1,13 +1,14 @@
-﻿using FacebookWrapper.ObjectModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper.ObjectModel;
 
 namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 {
@@ -58,7 +59,14 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
         {
             if (m_LoginLogoutBtn.Text == "Login")
             {
-				login();
+				try
+				{
+					login();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message);
+				}
             }
             else
 			{
@@ -166,42 +174,37 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
         }
 
         private void runFindMatchBtn_Click(object sender, EventArgs e)
-        {
-            string userMatchMail = null;
-            try
-            {
-                if (m_RadioFriends.Checked)
-                {
-                    m_PictureProfileMatch.LoadAsync(m_FacebookManager.FindYourMatchFriends(userMatchMail));
-                    m_ExplainOfMatchLabel.Text = "This is your friend with the most mutual friends!";
-                }
-                else if (m_RadioGroup.Checked)
-                {
-                    m_PictureProfileMatch.LoadAsync(m_FacebookManager.FindYourMatchGroups(userMatchMail));
-                    m_ExplainOfMatchLabel.Text = "This is your friend with the most mutual groups!";
-                }
-                else
-                {
-                    m_PictureProfileMatch.LoadAsync(m_FacebookManager.FindYourMatchPhotos(userMatchMail));
-                    m_ExplainOfMatchLabel.Text = "This is your friend who gave you the most likes! ";
-                }
+		{
+			foreach(Control control in this.m_FindMatchTab.Controls)
+			{
+				if(control is MatchTypeRadioBtn)
+				{
+					if((control as MatchTypeRadioBtn).Checked)
+					{
+						m_FacebookManager.MatchFinder.MatchType = (control as MatchTypeRadioBtn).MatchType;
+					}
+				}
+			}
 
-                m_PictureProfileFeature.LoadAsync(m_FacebookManager.LoggedInUser.PictureNormalURL);
-                UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
-                                                                            "\n friend a message? "));
-                sendEmailChoice.ShowDialog();
-                if (sendEmailChoice.Choice)
-                {
-                    m_FacebookManager.SendMail(userMatchMail);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+			try
+			{
+				m_FacebookManager.FindYourMatch();
+				m_PictureProfileMatch.LoadAsync(m_FacebookManager.MatchFinder.getPic());
+				UserChoiceForm sendEmailChoice = new UserChoiceForm(string.Format(@"Would you like send your match" +
+																			"\n friend a message? "));
+				sendEmailChoice.ShowDialog();
+				if (sendEmailChoice.Choice)
+				{
+					m_FacebookManager.SendMail(m_FacebookManager.MatchFinder.getMail());
+				}
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
+		protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
             m_FacebookManager.AppSettingsInstance.RememberUser = this.m_RemberMeCheckbox.Checked;
@@ -247,5 +250,5 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
                 MessageBox.Show(ex.Message);
             }
         }
-    }
+	}
 }

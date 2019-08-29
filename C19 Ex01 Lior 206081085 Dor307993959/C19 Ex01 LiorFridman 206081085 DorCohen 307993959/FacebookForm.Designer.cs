@@ -31,14 +31,16 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.Windows.Forms.TabPage m_MainTab;
+			System.Windows.Forms.Label likesCountLabel;
 			System.Windows.Forms.Label createdTimeLabel;
 			System.Windows.Forms.Label descriptionLabel;
 			System.Windows.Forms.Label nameLabel;
 			System.Windows.Forms.Label updateTimeLabel;
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacebookForm));
-			System.Windows.Forms.Label likesCountLabel;
-			this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.likesCountLabel1 = new System.Windows.Forms.Label();
+			this.commentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.postBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.createdTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
 			this.descriptionTextBox = new System.Windows.Forms.TextBox();
 			this.nameLabel1 = new System.Windows.Forms.Label();
 			this.updateTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -59,9 +61,6 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.m_RadioFriends = new System.Windows.Forms.RadioButton();
-			this.m_RadioGroup = new System.Windows.Forms.RadioButton();
-			this.m_RadioPhoto = new System.Windows.Forms.RadioButton();
 			this.m_PictureProfileMatch = new System.Windows.Forms.PictureBox();
 			this.m_PictureProfileFeature = new System.Windows.Forms.PictureBox();
 			this.m_Bar = new System.Windows.Forms.TabControl();
@@ -70,15 +69,17 @@
 			this.m_BestTImePic = new System.Windows.Forms.PictureBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.m_BestPhotoBtn = new System.Windows.Forms.Button();
-			this.commentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.likesCountLabel1 = new System.Windows.Forms.Label();
+			this.m_MatchGroupRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
+			this.m_MatchFriendRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
+			this.m_MatchPhotoRadioBtn = new C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchTypeRadioBtn();
 			m_MainTab = new System.Windows.Forms.TabPage();
+			likesCountLabel = new System.Windows.Forms.Label();
 			createdTimeLabel = new System.Windows.Forms.Label();
 			descriptionLabel = new System.Windows.Forms.Label();
 			nameLabel = new System.Windows.Forms.Label();
 			updateTimeLabel = new System.Windows.Forms.Label();
-			likesCountLabel = new System.Windows.Forms.Label();
 			m_MainTab.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).BeginInit();
@@ -88,7 +89,6 @@
 			this.m_Bar.SuspendLayout();
 			this.secondfeature.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_BestTImePic)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// m_MainTab
@@ -122,6 +122,36 @@
 			m_MainTab.TabIndex = 0;
 			m_MainTab.Text = "Main";
 			// 
+			// likesCountLabel
+			// 
+			likesCountLabel.AutoSize = true;
+			likesCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			likesCountLabel.Location = new System.Drawing.Point(484, 324);
+			likesCountLabel.Name = "likesCountLabel";
+			likesCountLabel.Size = new System.Drawing.Size(80, 16);
+			likesCountLabel.TabIndex = 19;
+			likesCountLabel.Text = "Likes Count:";
+			// 
+			// likesCountLabel1
+			// 
+			this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.commentsBindingSource, "LikesCount", true));
+			this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.commentsBindingSource, "LikesCount", true));
+			this.likesCountLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.likesCountLabel1.Location = new System.Drawing.Point(590, 324);
+			this.likesCountLabel1.Name = "likesCountLabel1";
+			this.likesCountLabel1.Size = new System.Drawing.Size(100, 23);
+			this.likesCountLabel1.TabIndex = 20;
+			this.likesCountLabel1.Text = "label8";
+			// 
+			// commentsBindingSource
+			// 
+			this.commentsBindingSource.DataMember = "Comments";
+			this.commentsBindingSource.DataSource = this.postBindingSource;
+			// 
+			// postBindingSource
+			// 
+			this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+			// 
 			// createdTimeLabel
 			// 
 			createdTimeLabel.AutoSize = true;
@@ -140,10 +170,6 @@
 			this.createdTimeDateTimePicker.Name = "createdTimeDateTimePicker";
 			this.createdTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
 			this.createdTimeDateTimePicker.TabIndex = 13;
-			// 
-			// postBindingSource
-			// 
-			this.postBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
 			// 
 			// descriptionLabel
 			// 
@@ -318,14 +344,14 @@
 			// m_FindMatchTab
 			// 
 			this.m_FindMatchTab.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+			this.m_FindMatchTab.Controls.Add(this.m_MatchPhotoRadioBtn);
+			this.m_FindMatchTab.Controls.Add(this.m_MatchFriendRadioBtn);
+			this.m_FindMatchTab.Controls.Add(this.m_MatchGroupRadioBtn);
 			this.m_FindMatchTab.Controls.Add(this.m_ExplainOfMatchLabel);
 			this.m_FindMatchTab.Controls.Add(this.m_RunMatchBtn);
 			this.m_FindMatchTab.Controls.Add(this.label4);
 			this.m_FindMatchTab.Controls.Add(this.label3);
 			this.m_FindMatchTab.Controls.Add(this.label2);
-			this.m_FindMatchTab.Controls.Add(this.m_RadioFriends);
-			this.m_FindMatchTab.Controls.Add(this.m_RadioGroup);
-			this.m_FindMatchTab.Controls.Add(this.m_RadioPhoto);
 			this.m_FindMatchTab.Controls.Add(this.m_PictureProfileMatch);
 			this.m_FindMatchTab.Controls.Add(this.m_PictureProfileFeature);
 			this.m_FindMatchTab.Location = new System.Drawing.Point(4, 22);
@@ -386,41 +412,6 @@
 			this.label2.Size = new System.Drawing.Size(65, 20);
 			this.label2.TabIndex = 8;
 			this.label2.Text = "You are";
-			// 
-			// m_RadioFriends
-			// 
-			this.m_RadioFriends.AutoSize = true;
-			this.m_RadioFriends.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_RadioFriends.Location = new System.Drawing.Point(52, 96);
-			this.m_RadioFriends.Name = "m_RadioFriends";
-			this.m_RadioFriends.Size = new System.Drawing.Size(132, 24);
-			this.m_RadioFriends.TabIndex = 7;
-			this.m_RadioFriends.Text = "Mutual Friends";
-			this.m_RadioFriends.UseVisualStyleBackColor = true;
-			// 
-			// m_RadioGroup
-			// 
-			this.m_RadioGroup.AutoSize = true;
-			this.m_RadioGroup.Checked = true;
-			this.m_RadioGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_RadioGroup.Location = new System.Drawing.Point(52, 66);
-			this.m_RadioGroup.Name = "m_RadioGroup";
-			this.m_RadioGroup.Size = new System.Drawing.Size(132, 24);
-			this.m_RadioGroup.TabIndex = 6;
-			this.m_RadioGroup.TabStop = true;
-			this.m_RadioGroup.Text = "Mutual Groups";
-			this.m_RadioGroup.UseVisualStyleBackColor = true;
-			// 
-			// m_RadioPhoto
-			// 
-			this.m_RadioPhoto.AutoSize = true;
-			this.m_RadioPhoto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.m_RadioPhoto.Location = new System.Drawing.Point(52, 126);
-			this.m_RadioPhoto.Name = "m_RadioPhoto";
-			this.m_RadioPhoto.Size = new System.Drawing.Size(129, 24);
-			this.m_RadioPhoto.TabIndex = 5;
-			this.m_RadioPhoto.Text = "Mutual Photos";
-			this.m_RadioPhoto.UseVisualStyleBackColor = true;
 			// 
 			// m_PictureProfileMatch
 			// 
@@ -510,31 +501,44 @@
 			this.m_BestPhotoBtn.UseVisualStyleBackColor = false;
 			this.m_BestPhotoBtn.Click += new System.EventHandler(this.bestPhotoBtn_Click);
 			// 
-			// commentsBindingSource
+			// m_MatchGroupRadioBtn
 			// 
-			this.commentsBindingSource.DataMember = "Comments";
-			this.commentsBindingSource.DataSource = this.postBindingSource;
+			this.m_MatchGroupRadioBtn.AutoSize = true;
+			this.m_MatchGroupRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.m_MatchGroupRadioBtn.Location = new System.Drawing.Point(43, 75);
+			this.m_MatchGroupRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Group;
+			this.m_MatchGroupRadioBtn.Name = "m_MatchGroupRadioBtn";
+			this.m_MatchGroupRadioBtn.Size = new System.Drawing.Size(144, 24);
+			this.m_MatchGroupRadioBtn.TabIndex = 13;
+			this.m_MatchGroupRadioBtn.TabStop = true;
+			this.m_MatchGroupRadioBtn.Text = "Match by groups";
+			this.m_MatchGroupRadioBtn.UseVisualStyleBackColor = true;
 			// 
-			// likesCountLabel
+			// m_MatchFriendRadioBtn
 			// 
-			likesCountLabel.AutoSize = true;
-			likesCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			likesCountLabel.Location = new System.Drawing.Point(484, 324);
-			likesCountLabel.Name = "likesCountLabel";
-			likesCountLabel.Size = new System.Drawing.Size(80, 16);
-			likesCountLabel.TabIndex = 19;
-			likesCountLabel.Text = "Likes Count:";
+			this.m_MatchFriendRadioBtn.AutoSize = true;
+			this.m_MatchFriendRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.m_MatchFriendRadioBtn.Location = new System.Drawing.Point(43, 108);
+			this.m_MatchFriendRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Friend;
+			this.m_MatchFriendRadioBtn.Name = "m_MatchFriendRadioBtn";
+			this.m_MatchFriendRadioBtn.Size = new System.Drawing.Size(143, 24);
+			this.m_MatchFriendRadioBtn.TabIndex = 14;
+			this.m_MatchFriendRadioBtn.TabStop = true;
+			this.m_MatchFriendRadioBtn.Text = "Match by friends";
+			this.m_MatchFriendRadioBtn.UseVisualStyleBackColor = true;
 			// 
-			// likesCountLabel1
+			// m_MatchPhotoRadioBtn
 			// 
-			this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.commentsBindingSource, "LikesCount", true));
-			this.likesCountLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.commentsBindingSource, "LikesCount", true));
-			this.likesCountLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-			this.likesCountLabel1.Location = new System.Drawing.Point(590, 324);
-			this.likesCountLabel1.Name = "likesCountLabel1";
-			this.likesCountLabel1.Size = new System.Drawing.Size(100, 23);
-			this.likesCountLabel1.TabIndex = 20;
-			this.likesCountLabel1.Text = "label8";
+			this.m_MatchPhotoRadioBtn.AutoSize = true;
+			this.m_MatchPhotoRadioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+			this.m_MatchPhotoRadioBtn.Location = new System.Drawing.Point(43, 138);
+			this.m_MatchPhotoRadioBtn.MatchType = C19_Ex01_LiorFridman_206081085_DorCohen_307993959.MatchType.Photo;
+			this.m_MatchPhotoRadioBtn.Name = "m_MatchPhotoRadioBtn";
+			this.m_MatchPhotoRadioBtn.Size = new System.Drawing.Size(144, 24);
+			this.m_MatchPhotoRadioBtn.TabIndex = 15;
+			this.m_MatchPhotoRadioBtn.TabStop = true;
+			this.m_MatchPhotoRadioBtn.Text = "Match by photos";
+			this.m_MatchPhotoRadioBtn.UseVisualStyleBackColor = true;
 			// 
 			// FacebookForm
 			// 
@@ -550,6 +554,7 @@
 			this.Text = "Facebook Application";
 			m_MainTab.ResumeLayout(false);
 			m_MainTab.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.postBindingSource)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_ProfilePicMain)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.m_FaceBookBarPic)).EndInit();
@@ -561,7 +566,6 @@
 			this.secondfeature.ResumeLayout(false);
 			this.secondfeature.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.m_BestTImePic)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.commentsBindingSource)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -580,9 +584,6 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.RadioButton m_RadioFriends;
-		private System.Windows.Forms.RadioButton m_RadioGroup;
-		private System.Windows.Forms.RadioButton m_RadioPhoto;
 		private System.Windows.Forms.PictureBox m_PictureProfileMatch;
 		private System.Windows.Forms.PictureBox m_PictureProfileFeature;
 		private System.Windows.Forms.TabPage secondfeature;
@@ -603,5 +604,8 @@
 		private System.Windows.Forms.DateTimePicker updateTimeDateTimePicker;
 		private System.Windows.Forms.BindingSource commentsBindingSource;
 		private System.Windows.Forms.Label likesCountLabel1;
+		private MatchTypeRadioBtn m_MatchPhotoRadioBtn;
+		private MatchTypeRadioBtn m_MatchFriendRadioBtn;
+		private MatchTypeRadioBtn m_MatchGroupRadioBtn;
 	}
 }

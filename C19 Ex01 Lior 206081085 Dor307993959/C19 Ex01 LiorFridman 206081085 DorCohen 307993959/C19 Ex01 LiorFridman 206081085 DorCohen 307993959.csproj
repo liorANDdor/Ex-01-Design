@@ -61,6 +61,16 @@
     </Compile>
     <Compile Include="FacebookManager.cs" />
     <Compile Include="FacebookServiceFacade.cs" />
+    <Compile Include="FactoryMatcher.cs" />
+    <Compile Include="FriendMatcher.cs" />
+    <Compile Include="GroupMatcher.cs" />
+    <Compile Include="IMatcher.cs" />
+    <Compile Include="MatchFinderFeature.cs" />
+    <Compile Include="MatchTypeRadioBtn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MatchTypeEnum.cs" />
+    <Compile Include="PhotoMatcher.cs" />
     <Compile Include="PhotosAndLikes.cs" />
     <Compile Include="TextFillForm.cs">
       <SubType>Form</SubType>

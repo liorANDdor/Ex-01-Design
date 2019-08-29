@@ -21,6 +21,8 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		private static FacebookManager m_FacebookManager = null;
 
+		public MatchFinderFeature MatchFinder { get; set; }
+
 		public static FacebookManager GetInstance()
 		{
 			if(m_FacebookManager == null)
@@ -35,10 +37,16 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 
 		private FacebookManager()
 		{
+			MatchFinder = new MatchFinderFeature();
 			AppSettingsInstance = AppSettings.LoadFromFile();
 			FaceBookServiceFacade = new FacebookServiceFacade();
 		}
 
+		public void FindYourMatch()
+		{
+			MatchFinder.FindMatch(LoggedInUser);
+		}
+		
 		public void Login()
 		{
 			LoginResult = FaceBookServiceFacade.Login();
@@ -82,41 +90,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			AppSettingsInstance.RememberUser = false;
 		}
 
-		public string FindYourMatchPhotos(string io_FriendMail)
-		{
-			FacebookObjectCollection<User> friendsOfUser = LoggedInUser.Friends;
-			Dictionary<User, int> likesOfFriendsList = new Dictionary<User, int>();
-			foreach (Album album in LoggedInUser.Albums)
-			{
-				foreach (Photo photo in album.Photos)
-				{
-					foreach (User user in photo.LikedBy)
-					{
-						if (likesOfFriendsList.ContainsKey(user))
-						{
-							likesOfFriendsList[user]++;
-						}
-						else
-						{
-							likesOfFriendsList.Add(user, 1);
-						}
-					}
-				}
-			}
-
-			KeyValuePair<User, int> theMostLikerFriend = new KeyValuePair<User, int>(null, 0);
-			foreach (KeyValuePair<User, int> likesOfFriend in likesOfFriendsList)
-			{
-                if (likesOfFriend.Value > theMostLikerFriend.Value)
-                {
-                    theMostLikerFriend = likesOfFriend;
-                }
-			}
-
-			io_FriendMail = theMostLikerFriend.Key.Email;
-			return theMostLikerFriend.Key.PictureNormalURL;
-		}
-
 		internal List<string> FetchUserFriends()
 		{
 			List<string> friendsList = new List<string>();
@@ -139,38 +112,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			return groupList;
 		}
 
-		public string FindYourMatchFriends(string io_FriendMail)
-		{
-			int mutualFriends;
-			int maxMutualFriends = 0;
-			Random rnd = new Random();
-			int num = rnd.Next(1, 20);
-			User myMatchFriend = LoggedInUser.Friends[num];
-			foreach (User friend in LoggedInUser.Friends)
-			{
-				mutualFriends = 0;
-				foreach (User hisfriend in friend.Friends)
-				{
-					foreach (User myFriend in LoggedInUser.Friends)
-					{
-                        if (hisfriend == myFriend)
-                        {
-                            mutualFriends++;
-                        }
-					}
-				}
-
-				if (mutualFriends > maxMutualFriends)
-				{
-					maxMutualFriends = mutualFriends;
-					myMatchFriend = friend;
-				}
-			}
-
-			io_FriendMail = myMatchFriend.Email;
-			return myMatchFriend.PictureLargeURL;
-		}
-		
 		public int FindBestTimeToUploadAPicture(List<string> io_Pictures)
 		{
 			FacebookObjectCollection<Album> albums;
@@ -231,38 +172,6 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 			smtpServer.Credentials = new NetworkCredential(@"facebookuserdorlior@gmail.com", "Fb123456");
 			smtpServer.EnableSsl = true;
 			smtpServer.Send(mail);
-		}
-
-		public string FindYourMatchGroups(string io_FriendMail)
-		{
-			int MutualGroups;
-			int maxMutualGroups = 0;
-			Random rnd = new Random();
-			int num = rnd.Next(1, 20);
-			User myMatch = LoggedInUser.Friends[num];
-			foreach (User friend in LoggedInUser.Friends)
-			{
-				MutualGroups = 0;
-				foreach (Group group in LoggedInUser.Groups)
-				{
-					foreach (Group friendgroup in friend.Groups)
-					{
-                        if (friendgroup.Id == group.Id)
-                        {
-                            MutualGroups++;
-                        }
-					}
-				}
-
-				if (MutualGroups > maxMutualGroups)
-				{
-					maxMutualGroups = MutualGroups;
-					myMatch = friend;
-				}
-			}
-
-			io_FriendMail = myMatch.Email;
-			return myMatch.PictureLargeURL;
 		}
 	}
 }
