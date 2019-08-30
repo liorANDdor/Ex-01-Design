@@ -14,7 +14,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
 		{
 			LoginResult result = null;
 			AppSettings instance = AppSettings.GetInstance();
-			if (instance.RememberUser && !string.IsNullOrEmpty(instance.AccessToken))
+			if (!string.IsNullOrEmpty(instance.AccessToken))
 			{
 				try
 				{

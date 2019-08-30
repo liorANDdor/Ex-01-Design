@@ -37,8 +37,7 @@ namespace C19_Ex01_LiorFridman_206081085_DorCohen_307993959
             base.OnShown(e);
             try
             {
-                if (m_FacebookManager.AppSettingsInstance.RememberUser &&
-                    !string.IsNullOrEmpty(m_FacebookManager.AppSettingsInstance.AccessToken))
+                if (m_FacebookManager.AppSettingsInstance.RememberUser)
                 {
 					login();
                 }
